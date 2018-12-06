@@ -42,9 +42,14 @@ public class LigaBaloncesto {
         System.out.println ("Buscar por DNI:2");
         System.out.println ("Añadir Persona:3");
         System.out.println ("Eliminar por DNI:4");
-        System.out.println ("**METODOS SIN IMPLEMENTAR**");
-       
-        System.out.println ("***************************");
+      //System.out.println ("Añadir equipo: 5");
+      //System.out.println ("Añadir jugador: 6");    //Debe existir el equipo
+      //System.out.println ("Añadir entrenador: 7"); //Debe existir el equipo
+      //System.out.println ("Añadir arbitro: 8");
+      //System.out.println ("Crear Liga: 9"); //Se selccionan los equipos y se crean las jornadas con round roubin
+      //System.out.println ("Añadir resultados partidos: 10");
+      //System.out.println ("Mostrar clasificacion: 11");
+      //System.out.println ("Buscar equipos: 12");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
