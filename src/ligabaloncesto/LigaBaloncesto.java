@@ -62,12 +62,24 @@ public class LigaBaloncesto {
         }
         if(opcion==2){
             Persona p = new Persona();
-            p.setDni("66666");
-            p.setApellido("el hodifi");
-            p.setNombre("mohammed");
-            p.setRol("entrendaor");
-            p.setFech_nac("1988");
-            p.setTelefono("888888");
+            System.out.println ("DNI: ");
+                String temp= reader.next();
+                p.setDni(temp);
+            System.out.println ("Nombre: ");
+                temp= reader.next();
+                p.setNombre(temp);
+            System.out.println ("Apellido: ");
+                temp= reader.next();
+                p.setApellido(temp);
+            System.out.println ("Rol: ");
+                temp= reader.next();
+                p.setRol(temp);
+            System.out.println ("Fecha de nacimiento: ");
+                temp= reader.next();   
+                p.setFech_nac(temp);
+            System.out.println ("Telefono: ");
+                temp= reader.next();
+                p.setTelefono(temp);
             
             boolean personaInsertada = personaDao.insertarPersona(p);
             if (personaInsertada) {
