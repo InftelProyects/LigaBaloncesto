@@ -15,7 +15,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import model.Persona;
+import oracle.net.aso.i;
 import utils.Contants;
 
 /**
@@ -29,46 +31,62 @@ public class LigaBaloncesto {
      */
     public static void main(String[] args) {
         //conection a base de datos  (https://www.mkyong.com/jdbc/connect-to-oracle-db-via-jdbc-driver-java/)
+       
         IPersonaDao personaDao = new PersonaDaoImpl();
-        List<Persona> listaPersonas = personaDao.buscarTodos();
-        System.out.println();
-        for (int i=0; i<listaPersonas.size(); i++) {
-            Persona persona = listaPersonas.get(i);
-            System.out.println(persona.toString());
+        
+//MENÚ PARA HACER PRUEBAS
+        int opcion;
+        Scanner reader = new Scanner(System.in);
+        System.out.println ("Mostrar todo:0");
+        System.out.println ("Buscar por DNI:1");
+        System.out.println ("Añadir Persona:2");
+        System.out.println ("Eliminar por DNI:3");
+        System.out.println ("Seleccione opcion: ");
+        opcion = reader.nextInt();
+       
+        if(opcion==0){
+           
+           List<Persona> listaPersonas = personaDao.buscarTodos();
+           System.out.println();
+            for (int i=0; i<listaPersonas.size(); i++) {
+                Persona persona = listaPersonas.get(i);
+                System.out.println(persona.toString());
+            }
+        } 
+        if(opcion==1){
+            String dni;
+            System.out.println("Introduzca dni");
+            dni = reader.next();
+            Persona personaPorDni = personaDao.buscarPorDni(dni);
+            System.out.println("Persona buscada por dni: " + personaPorDni.toString());
         }
-        
-        Persona personaPorDni = personaDao.buscarPorDni("222");
-        System.out.println("Persona buscada por dni: " + personaPorDni.toString());
-        
-        Persona p = new Persona();
-        p.setDni("66666");
-        p.setApellido("el hodifi");
-        p.setNombre("mohammed");
-        p.setRol("entrendaor");
-        p.setFech_nac("1988");
-        p.setTelefono("888888");
-        boolean personaInsertada = personaDao.insertarPersona(p);
-        if (personaInsertada) {
-            System.out.println("La persona ha sido insertada correctamente");
+        if(opcion==2){
+            Persona p = new Persona();
+            p.setDni("66666");
+            p.setApellido("el hodifi");
+            p.setNombre("mohammed");
+            p.setRol("entrendaor");
+            p.setFech_nac("1988");
+            p.setTelefono("888888");
+            
+            boolean personaInsertada = personaDao.insertarPersona(p);
+            if (personaInsertada) {
+                System.out.println("La persona ha sido insertada correctamente");
+            }
         }
-        
-        
-        boolean eliminarPorDni = personaDao.eliminarPorDni("66666");
-        if(eliminarPorDni){
-             System.out.println("La persona ha sido borrada correctamente");
-        }else{
-             System.out.println("La persona no ha sido borrada");
+        if(opcion==3){
+            String dni;
+            System.out.println("Introduzca dni");
+            dni = reader.next();
+            boolean eliminarPorDni = personaDao.eliminarPorDni(dni);
+            if(eliminarPorDni){
+                 System.out.println("La persona ha sido borrada correctamente");
+            }else{
+                 System.out.println("La persona no ha sido borrada");
+            }
         }
-        
-        Persona p2 = new Persona();
-        p2.setDni("66666");
-        p2.setApellido("el hodifi");
-        p2.setNombre("mohammed");
-        p2.setRol("entrendaor");
-        p2.setFech_nac("1988");
-        p2.setTelefono("888888");
-        
-        personaDao.actualizarPersona(p2);
+
+        //personaDao.actualizarPersona(p2);
     }
     
 }

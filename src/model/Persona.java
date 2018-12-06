@@ -33,7 +33,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Personas{" + "nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + '}';
+        return nombre  +" "+ apellido + ", " + rol;
     }
 
     @Override
