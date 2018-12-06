@@ -22,7 +22,7 @@ import static javafx.application.Platform.exit;
 import model.Partido;
 import model.Persona;
 import model.Equipo;
-import oracle.net.aso.i;
+//import oracle.net.aso.i;
 import utils.Contants;
 import utils.GeneradorEmparejamiento;
 
@@ -50,7 +50,7 @@ public class LigaBaloncesto {
         System.out.println ("Eliminar por DNI:4");
         System.out.println ("Crear emparejamientos:5");
         System.out.println ("Añadir equipo: 6");
-      //System.out.println ("Añadir jugador: 7");    //Debe existir el equipo
+        System.out.println ("Eliminar equipo por nombre: 7");   
       //System.out.println ("Añadir entrenador: 8"); //Debe existir el equipo
       //System.out.println ("Añadir arbitro: 9");
       //System.out.println ("Crear Liga: 10"); //Se selccionan los equipos y se crean las jornadas con round roubin
@@ -148,6 +148,18 @@ public class LigaBaloncesto {
             boolean insertarEquipo = equipoDao.insertarEquipo(equipo);
             if (insertarEquipo) {
                 System.out.println("El equipo ha sido insertada correctamente");
+            }
+        }
+        if(opcion==7){
+            String nombre;
+            System.out.println("Introduzca nombre de equipo");
+            nombre = reader.next();
+            
+            boolean eliminarPorIdEquipo = equipoDao.eliminarPorIdEquipo(nombre);
+            if(eliminarPorIdEquipo){
+                 System.out.println("La persona ha sido borrada correctamente");
+            }else{
+                 System.out.println("La persona no ha sido borrada");
             }
         }
         if(opcion==0){

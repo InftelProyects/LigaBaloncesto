@@ -16,6 +16,6 @@ public interface IEquipoDao {
     Equipo buscarPorIdEquipo(int id);
     List<Equipo> buscarTodos();
     boolean insertarEquipo(Equipo equipo);  
-    boolean eliminarPorIdEquipo(int id);
+    boolean eliminarPorIdEquipo(String nombre);
     boolean actualizarEquipo(Equipo equipo);
 }

@@ -105,15 +105,44 @@ public class EquipoDaoImpl implements IEquipoDao{
         return numTuplas1 > 0;
     }
 
-   
-
     @Override
-    public boolean eliminarPorIdEquipo(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean eliminarPorIdEquipo(String nombre) {
+       
+       int  numTuplas1 = 0; 
+       DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        System.out.println("borrar equipo por nombre");
+        Statement stmt;
+        try {
+            stmt = connection.createStatement();
+            numTuplas1 = stmt.executeUpdate("DELETE FROM EQUIPO WHERE NOMBRE = '"+nombre+"' ");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipoDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return numTuplas1 > 0;
     }
 
     @Override
     public boolean actualizarEquipo(Equipo equipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int numTuplas1 = 0;
+         DatabaseConnector databaseConnector = new DatabaseConnector();
+         Connection connection = databaseConnector.getConnection(
+                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+         Statement stmt;
+            try {
+                System.out.println(" actualizar el equipo ");
+                stmt = connection.createStatement();
+                numTuplas1 = stmt.executeUpdate("UPDATE EQUIPO SET "
+                        + "NOMBRE = '"+equipo.getNombre()+"', "
+                        + "CATEGORIA = '"+equipo.getCategoria()+"', "
+                        + "PROVINCIA = '"+equipo.getProvincia()+"' ,"
+                        + "PUNTOS = '"+equipo.getPuntos()+"', "
+                        + "ID_EQUIPO = '"+equipo.getId_equipo()+"' ");
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        return numTuplas1 > 0;
     }
 }
