@@ -10,13 +10,13 @@ package model;
  * @author mohammed
  */
 public class Equipo {
-    private char categoria;
-    private char nombre;
-    private char provincia;
+    private String categoria;
+    private String nombre;
+    private String provincia;
     private int id_equipo;
     private int puntos;
 
-    public Equipo(char categoria, char nombre, char provincia, int id_equipo, int puntos) {
+    public Equipo(String categoria, String nombre, String provincia, int id_equipo, int puntos) {
         this.categoria = categoria;
         this.nombre = nombre;
         this.provincia = provincia;
@@ -24,27 +24,27 @@ public class Equipo {
         this.puntos = puntos;
     }
 
-    public char getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(char categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
-    public char getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(char nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public char getProvincia() {
+    public String getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(char provincia) {
+    public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
 

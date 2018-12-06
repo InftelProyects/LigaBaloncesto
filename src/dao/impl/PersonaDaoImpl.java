@@ -78,9 +78,9 @@ public class PersonaDaoImpl implements IPersonaDao{
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
-        Persona buscarPorDni = buscarPorDni(p.dni);
+        Persona buscarPorDni = buscarPorDni(p.getDni());
         if(buscarPorDni == null){
-            System.out.println("No existe ninguma persona con DNI "+p.dni);
+            System.out.println("No existe ninguma persona con DNI "+p.getDni());
             Statement stmt;
             try {
                 stmt = connection.createStatement();
@@ -95,7 +95,7 @@ public class PersonaDaoImpl implements IPersonaDao{
            
             
         }else{
-            System.out.println("la persona con DNI "+p.dni +" ya existe ");
+            System.out.println("la persona con DNI "+p.getDni() +" ya existe ");
         }
         
         return numTuplas1 > 0;

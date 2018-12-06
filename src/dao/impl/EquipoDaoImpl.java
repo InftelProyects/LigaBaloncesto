@@ -6,8 +6,17 @@
 package dao.impl;
 
 import dao.IEquipoDao;
+import db.DatabaseConnector;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Equipo;
+import utils.Contants;
 
 /**
  *
@@ -15,20 +24,89 @@ import model.Equipo;
  */
 public class EquipoDaoImpl implements IEquipoDao{
 
+   
     @Override
     public Equipo buscarPorIdEquipo(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+         Statement stmt;
+        try {
+            stmt = connection.createStatement();
+            
+             ResultSet resultado = stmt.executeQuery("SELECT * FROM EQUIPO WHERE ID_EQUIPO ='"+id+"'");
+             while (resultado.next()) {
+               
+                int idEquipo = resultado.getInt("ID_EQUIPO");
+                String nombre = resultado.getString("NOMBRE");
+                String provencia = resultado.getString("PROVENCIA");
+                String categoria = resultado.getString("CATEGORIA");
+                int puntos = resultado.getInt("PUNTOS");
+                
+                return new Equipo(categoria, nombre, provencia, idEquipo, puntos) ;
+                
+             }   
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipoDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           return null;
+            
     }
 
     @Override
     public List<Equipo> buscarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        List<Equipo> listaDeEquipos = new ArrayList<>();
+         Statement stmt;
+        try {
+            stmt = connection.createStatement();
+            ResultSet resultado = stmt.executeQuery("SELECT * FROM EQUIPO");
+            while (resultado.next()) {
+                int idEquipo = resultado.getInt("ID_EQUIPO");
+                String nombre = resultado.getString("NOMBRE");
+                String categoria = resultado.getString("CATEGORIA");
+                String provencia = resultado.getString("PROVINCIA");
+                int puntos = resultado.getInt("PUNTOS");
+                
+                Equipo equipo = new Equipo(categoria, nombre, provencia, idEquipo, puntos);
+                listaDeEquipos.add(equipo);
+                
+            }    
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipoDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaDeEquipos;
     }
 
     @Override
-    public boolean insertarPersona(Equipo equipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean insertarEquipo(Equipo equipo) {
+        int numTuplas1 = 0; 
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        Equipo buscarPorIdEquipo =  buscarPorIdEquipo(equipo.getId_equipo());
+        if(buscarPorIdEquipo == null){
+             System.out.println("No existe ningun Equipo con EL ID "+equipo.getId_equipo());
+            Statement stmt;
+            try {
+                stmt = connection.createStatement();
+                numTuplas1 = stmt.executeUpdate("INSERT INTO EQUIPO "
+                        + "(ID_EQUIPO,NOMBRE,PROVINCIA,CATEGORIA,PUNTOS) "
+                        + "VALUES "
+                        + "("+equipo.getId_equipo()+",'"+equipo.getNombre()+"','"
+                        +equipo.getProvincia()+"','"+ equipo.getCategoria()+"',"
+                        +equipo.getPuntos()+")");
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return numTuplas1 > 0;
     }
+
+   
 
     @Override
     public boolean eliminarPorIdEquipo(int id) {
@@ -36,9 +114,7 @@ public class EquipoDaoImpl implements IEquipoDao{
     }
 
     @Override
-    public boolean actualizarPersona(Equipo equipo) {
+    public boolean actualizarEquipo(Equipo equipo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 }

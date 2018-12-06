@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author mohammed
  */
 public class Persona {
-    public String dni;
+    private String dni;
     private String rol;
     private String telefono;
     private String fech_nac;
