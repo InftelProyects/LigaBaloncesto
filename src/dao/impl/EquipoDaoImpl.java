@@ -24,7 +24,6 @@ import utils.Contants;
  */
 public class EquipoDaoImpl implements IEquipoDao{
 
-   
     @Override
     public Equipo buscarPorIdEquipo(int id) {
          DatabaseConnector databaseConnector = new DatabaseConnector();

@@ -17,9 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static javafx.application.Platform.exit;
+import model.Partido;
 import model.Persona;
 import oracle.net.aso.i;
 import utils.Contants;
+import utils.GeneradorEmparejamiento;
 
 /**
  *
@@ -105,6 +107,22 @@ public class LigaBaloncesto {
                  System.out.println("La persona ha sido borrada correctamente");
             }else{
                  System.out.println("La persona no ha sido borrada");
+            }
+        }
+        
+        if(opcion==5){
+            
+            System.out.println("Generando emparejamientos");
+            GeneradorEmparejamiento emparejamiento = new GeneradorEmparejamiento();
+            List<List<Partido>> jornadas = emparejamiento.genararEmparejamientos();
+            int idPartido = 1;
+            for (int numJornada=0; numJornada< jornadas.size(); numJornada++){
+                for (int numPartido=0; numPartido<jornadas.get(numJornada).size(); numPartido++) {
+                    Partido partido = jornadas.get(numJornada).get(numPartido);
+                    partido.setJornada(numJornada+1);
+                    partido.setId_partido(idPartido);
+                    idPartido++;
+                }
             }
         }
         
