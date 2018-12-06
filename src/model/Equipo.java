@@ -24,6 +24,10 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    public Equipo() {
+       
+    }
+
     public String getCategoria() {
         return categoria;
     }

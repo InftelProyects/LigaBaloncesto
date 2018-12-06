@@ -7,6 +7,8 @@ package ligabaloncesto;
 
 import dao.IPersonaDao;
 import dao.impl.PersonaDaoImpl;
+import dao.IEquipoDao;
+import dao.impl.EquipoDaoImpl;
 import db.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +21,7 @@ import java.util.Scanner;
 import static javafx.application.Platform.exit;
 import model.Partido;
 import model.Persona;
+import model.Equipo;
 import oracle.net.aso.i;
 import utils.Contants;
 import utils.GeneradorEmparejamiento;
@@ -36,6 +39,7 @@ public class LigaBaloncesto {
         //conection a base de datos  (https://www.mkyong.com/jdbc/connect-to-oracle-db-via-jdbc-driver-java/)
        
         IPersonaDao personaDao = new PersonaDaoImpl();
+        IEquipoDao equipoDao = new EquipoDaoImpl();
         
 //MENÚ PARA HACER PRUEBAS
         int opcion;
@@ -44,14 +48,15 @@ public class LigaBaloncesto {
         System.out.println ("Buscar por DNI:2");
         System.out.println ("Añadir Persona:3");
         System.out.println ("Eliminar por DNI:4");
-      //System.out.println ("Añadir equipo: 5");
-      //System.out.println ("Añadir jugador: 6");    //Debe existir el equipo
-      //System.out.println ("Añadir entrenador: 7"); //Debe existir el equipo
-      //System.out.println ("Añadir arbitro: 8");
-      //System.out.println ("Crear Liga: 9"); //Se selccionan los equipos y se crean las jornadas con round roubin
-      //System.out.println ("Añadir resultados partidos: 10");
-      //System.out.println ("Mostrar clasificacion: 11");
-      //System.out.println ("Buscar equipos: 12");
+        System.out.println ("Crear emparejamientos:5");
+        System.out.println ("Añadir equipo: 6");
+      //System.out.println ("Añadir jugador: 7");    //Debe existir el equipo
+      //System.out.println ("Añadir entrenador: 8"); //Debe existir el equipo
+      //System.out.println ("Añadir arbitro: 9");
+      //System.out.println ("Crear Liga: 10"); //Se selccionan los equipos y se crean las jornadas con round roubin
+      //System.out.println ("Añadir resultados partidos: 11");
+      //System.out.println ("Mostrar clasificacion: 12");
+      //System.out.println ("Buscar equipos: 13");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -125,7 +130,26 @@ public class LigaBaloncesto {
                 }
             }
         }
-        
+        if(opcion==6){
+            Equipo equipo = new Equipo();
+            System.out.println ("Categoria: ");
+                String temp= reader.next();
+                equipo.setCategoria(temp);
+            System.out.println ("Nombre: ");
+                temp= reader.next();
+                equipo.setNombre(temp);
+            
+            System.out.println ("Provincia: ");
+                temp= reader.next();
+                equipo.setProvincia(temp);    
+            equipo.setId_equipo(5);
+            equipo.setPuntos(0);
+             
+            boolean insertarEquipo = equipoDao.insertarEquipo(equipo);
+            if (insertarEquipo) {
+                System.out.println("El equipo ha sido insertada correctamente");
+            }
+        }
         if(opcion==0){
            
            exit();

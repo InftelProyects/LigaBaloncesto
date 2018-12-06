@@ -15,7 +15,7 @@ import model.Equipo;
 public interface IEquipoDao {
     Equipo buscarPorIdEquipo(int id);
     List<Equipo> buscarTodos();
-    boolean insertarEquipo(Equipo equip);  
+    boolean insertarEquipo(Equipo equipo);  
     boolean eliminarPorIdEquipo(int id);
     boolean actualizarEquipo(Equipo equipo);
 }
