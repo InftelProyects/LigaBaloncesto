@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import static javafx.application.Platform.exit;
 import model.Persona;
 import oracle.net.aso.i;
 import utils.Contants;
@@ -37,14 +38,18 @@ public class LigaBaloncesto {
 //MENÚ PARA HACER PRUEBAS
         int opcion;
         Scanner reader = new Scanner(System.in);
-        System.out.println ("Mostrar todo:0");
-        System.out.println ("Buscar por DNI:1");
-        System.out.println ("Añadir Persona:2");
-        System.out.println ("Eliminar por DNI:3");
+        System.out.println ("Mostrar todo:1");
+        System.out.println ("Buscar por DNI:2");
+        System.out.println ("Añadir Persona:3");
+        System.out.println ("Eliminar por DNI:4");
+        System.out.println ("**METODOS SIN IMPLEMENTAR**");
+       
+        System.out.println ("***************************");
+        System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
        
-        if(opcion==0){
+        if(opcion==1){
            
            List<Persona> listaPersonas = personaDao.buscarTodos();
            System.out.println();
@@ -53,14 +58,14 @@ public class LigaBaloncesto {
                 System.out.println(persona.toString());
             }
         } 
-        if(opcion==1){
+        if(opcion==2){
             String dni;
             System.out.println("Introduzca dni");
             dni = reader.next();
             Persona personaPorDni = personaDao.buscarPorDni(dni);
             System.out.println("Persona buscada por dni: " + personaPorDni.toString());
         }
-        if(opcion==2){
+        if(opcion==3){
             Persona p = new Persona();
             System.out.println ("DNI: ");
                 String temp= reader.next();
@@ -86,7 +91,7 @@ public class LigaBaloncesto {
                 System.out.println("La persona ha sido insertada correctamente");
             }
         }
-        if(opcion==3){
+        if(opcion==4){
             String dni;
             System.out.println("Introduzca dni");
             dni = reader.next();
@@ -97,6 +102,11 @@ public class LigaBaloncesto {
                  System.out.println("La persona no ha sido borrada");
             }
         }
+        
+        if(opcion==0){
+           
+           exit();
+        } 
 
         //personaDao.actualizarPersona(p2);
     }
