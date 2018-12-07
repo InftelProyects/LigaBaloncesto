@@ -7,6 +7,8 @@ package ligabaloncesto;
 
 import dao.IPersonaDao;
 import dao.impl.PersonaDaoImpl;
+import dao.IEntrenadorDao;
+import dao.impl.EntrenadorDaoImpl;
 import dao.IEquipoDao;
 import dao.impl.EquipoDaoImpl;
 import db.DatabaseConnector;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import static javafx.application.Platform.exit;
+import model.Entrenador;
 import model.Partido;
 import model.Persona;
 import model.Equipo;
@@ -39,6 +42,7 @@ public class LigaBaloncesto {
         //conection a base de datos  (https://www.mkyong.com/jdbc/connect-to-oracle-db-via-jdbc-driver-java/)
        
         IPersonaDao personaDao = new PersonaDaoImpl();
+        IEntrenadorDao entrenadorDao = new EntrenadorDaoImpl();
         IEquipoDao equipoDao = new EquipoDaoImpl();
         
 //MENÚ PARA HACER PRUEBAS
@@ -147,7 +151,7 @@ public class LigaBaloncesto {
              
             boolean insertarEquipo = equipoDao.insertarEquipo(equipo);
             if (insertarEquipo) {
-                System.out.println("El equipo ha sido insertada correctamente");
+                System.out.println("El equipo ha sido insertado correctamente");
             }
         }
         if(opcion==7){
@@ -157,10 +161,18 @@ public class LigaBaloncesto {
             
             boolean eliminarPorIdEquipo = equipoDao.eliminarPorIdEquipo(nombre);
             if(eliminarPorIdEquipo){
-                 System.out.println("La persona ha sido borrada correctamente");
+                 System.out.println("El equipo ha sido borrada correctamente");
             }else{
-                 System.out.println("La persona no ha sido borrada");
+                 System.out.println("El equipo no ha sido borrado");
             }
+        }
+        
+        if(opcion==8){
+            String dni;
+            System.out.println("Introduzca dni");
+            dni = reader.next();
+            Entrenador entrenadorPorDni = entrenadorDao.buscarPorDni(dni);
+            System.out.println("Entrenador buscado por dni: " + entrenadorPorDni.toString());
         }
         if(opcion==0){
            
