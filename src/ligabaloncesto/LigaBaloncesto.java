@@ -56,11 +56,13 @@ public class LigaBaloncesto {
         System.out.println ("Añadir equipo: 6");
         System.out.println ("Eliminar equipo por nombre: 7");   
       //System.out.println ("Añadir entrenador: 8"); //Debe existir el equipo
-      //System.out.println ("Añadir arbitro: 9");
-      //System.out.println ("Crear Liga: 10"); //Se selccionan los equipos y se crean las jornadas con round roubin
-      //System.out.println ("Añadir resultados partidos: 11");
-      //System.out.println ("Mostrar clasificacion: 12");
-      //System.out.println ("Buscar equipos: 13");
+        System.out.println ("Mostrar entrenadores:9");
+        System.out.println ("Buscar entrenador DNI:10");
+      //System.out.println ("Añadir arbitro: ");
+      //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
+      //System.out.println ("Añadir resultados partidos: ");
+      //System.out.println ("Mostrar clasificacion: ");
+      //System.out.println ("Buscar equipos: ");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -168,6 +170,35 @@ public class LigaBaloncesto {
         }
         
         if(opcion==8){
+            Entrenador e = new Entrenador();
+            System.out.println ("DNI: ");
+                String temp= reader.next();
+                e.setDni(temp);
+            System.out.println ("Nivel: ");
+                temp= reader.next();
+                e.setNivel(temp);
+            System.out.println ("ID_equipo: ");
+                int temp2= reader.nextInt();
+                e.setId_equipo(temp2);
+                
+            boolean entrenadorInsertado = entrenadorDao.insertarEntrenador(e);
+            if (entrenadorInsertado) {
+                System.out.println("El entrenador ha sido insertada correctamente");
+            }
+        }
+
+        
+        if(opcion==9){
+           
+           List<Entrenador> listaEntrenadores = entrenadorDao.buscarTodos();
+           System.out.println();
+            for (int i=0; i<listaEntrenadores.size(); i++) {
+                Entrenador entrenador = listaEntrenadores.get(i);
+                System.out.println(entrenador.toString());
+            }
+        } 
+        
+        if(opcion==10){
             String dni;
             System.out.println("Introduzca dni");
             dni = reader.next();

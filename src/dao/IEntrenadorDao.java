@@ -5,7 +5,7 @@
  */
 package dao;
 
-//import java.util.List;
+import java.util.List;
 import model.Entrenador;
 
 /**
@@ -14,8 +14,8 @@ import model.Entrenador;
  */
 public interface IEntrenadorDao {
     Entrenador buscarPorDni(String dni);
-    //List<Entrenador> buscarTodos();
-    //boolean insertarEntrenador(Entrenador e);
+    List<Entrenador> buscarTodos();
+    boolean insertarEntrenador(Entrenador e);
     //boolean eliminarPorDni(String dni);
    // boolean actualizarEntrenador(Entrenador e);
 }

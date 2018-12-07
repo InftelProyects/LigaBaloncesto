@@ -6,6 +6,8 @@
 package dao.impl;
 
 import dao.IEntrenadorDao;
+import dao.IPersonaDao;
+import dao.impl.PersonaDaoImpl;
 import db.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,12 +18,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Entrenador;
+import model.Persona;
 import utils.Contants;
 
 /**
  *
  * @author mohammed
  */
+
+
+
 public class EntrenadorDaoImpl implements IEntrenadorDao{
 
     @Override
@@ -45,61 +51,64 @@ public class EntrenadorDaoImpl implements IEntrenadorDao{
         }
         return null;
     }
-/*
+
+    /**
+     *
+     * @return
+     */
     @Override
-    public List<Persona> buscarTodos() {
+    public List<Entrenador> buscarTodos() {
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
-        List<Persona> listaPersonas = new ArrayList<>();
+        List<Entrenador> listaEntrenadores = new ArrayList<>();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet resultado = stmt.executeQuery("SELECT * FROM PERSONA");
+            ResultSet resultado = stmt.executeQuery("SELECT persona.nombre,persona.apellidos,entrenador.nivel,equipo.nombre_equipo FROM ENTRENADOR,PERSONA,EQUIPO WHERE entrenador.dni=persona.dni AND entrenador.id_equipo=equipo.id_equipo");
             while (resultado.next()) {
-                String dni = resultado.getString("dni");
-                String rol = resultado.getString("rol");
-                String telefono = resultado.getString("telefono");
-                String fechaNaci = resultado.getString("fecha_nacimiento");
                 String nombre = resultado.getString("nombre");
-                String apellido = resultado.getString("apellidos");
-                Persona persona = new Persona(dni, rol, telefono, fechaNaci, nombre, apellido);
-                listaPersonas.add(persona);
+                String apellidos = resultado.getString("apellidos");
+                String nivel = resultado.getString("nivel");
+                String nombre_equipo = resultado.getString("nombre_equipo");
+                
+                Entrenador entrenador = new Entrenador(nombre,apellidos,nivel,nombre_equipo);
+                listaEntrenadores.add(entrenador);
             }
         } catch (SQLException ex) {
             System.out.println("Query error: " + ex.getMessage());
         }
-        return listaPersonas;
+        return listaEntrenadores;
     }
-
     @Override
-    public boolean insertarPersona(Persona p) {
+    public boolean insertarEntrenador(Entrenador e) {
         int numTuplas1 = 0;
+        Persona p;
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
-        Persona buscarPorDni = buscarPorDni(p.getDni());
-        if(buscarPorDni == null){
-            System.out.println("No existe ninguma persona con DNI "+p.getDni());
+        //Persona buscarPorDni = IPersonaDao.buscarPorDni(e.getDni());
+        /*if(buscarPorDni == null){
+            
+           System.out.println("El entrenador con DNI "+e.getDni() +" no existe ");
+            
+        }else{
+            
+            System.out.println("El entrenador con DNI "+e.getDni() +" existe ");*/
             Statement stmt;
             try {
                 stmt = connection.createStatement();
-                numTuplas1 = stmt.executeUpdate("INSERT INTO PERSONA "
-                        + "(DNI,ROL,NOMBRE,APELLIDOS,TELEFONO,FECHA_NACIMIENTO) "
+                numTuplas1 = stmt.executeUpdate("INSERT INTO ENTRENADOR "
+                        + "(DNI,NIVEL,EQUIPO_ID_EQUIPO,ID_EQUIPO) "
                         + "VALUES "
-                        + "('"+p.getDni()+"','"+p.getRol()+"','"+p.getNombre()+"','"+p.getApellido()+"','"+p.getTelefono()
-                        +"','"+p.getFech_nac()+"')");
+                        + "('"+e.getDni()+"','"+e.getNivel()+"','"+e.getId_equipo()+"','"+e.getId_equipo()+"')");
             } catch (SQLException ex) {
                 Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-            
-        }else{
-            System.out.println("la persona con DNI "+p.getDni() +" ya existe ");
-        }
+        //}
         
         return numTuplas1 > 0;
     }
-
+/*
     @Override
     public boolean eliminarPorDni(String dni) {
          int numTuplas1 = 0;
