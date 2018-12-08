@@ -99,9 +99,9 @@ public class EntrenadorDaoImpl implements IEntrenadorDao{
             try {
                 stmt = connection.createStatement();
                 numTuplas1 = stmt.executeUpdate("INSERT INTO ENTRENADOR "
-                        + "(DNI,NIVEL,EQUIPO_ID_EQUIPO,ID_EQUIPO) "
+                        + "(DNI,NIVEL,EQUIPO_ID_EQUIPO,) "
                         + "VALUES "
-                        + "('"+e.getDni()+"','"+e.getNivel()+"','"+e.getId_equipo()+"','"+e.getId_equipo()+"')");
+                        + "('"+e.getDni()+"','"+e.getNivel()+"','"+e.getId_equipo()+"')");
             } catch (SQLException ex) {
                 //Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("La persona no existe");
