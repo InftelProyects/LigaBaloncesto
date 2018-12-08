@@ -104,7 +104,7 @@ public class ArbitroDaoImpl implements IArbitroDao{
                         + "('"+a.getDni()+"','"+a.getProvincia()+"')");
             } catch (SQLException ex) {
                 //Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("El arbitro no existe");
+                System.out.println("La persona no existe");
                 exit();
             }
            
