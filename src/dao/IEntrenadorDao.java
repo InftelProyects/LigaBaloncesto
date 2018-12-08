@@ -10,7 +10,7 @@ import model.Entrenador;
 
 /**
  *
- * @author mohammed
+ * @author josep
  */
 public interface IEntrenadorDao {
     Entrenador buscarPorDni(String dni);

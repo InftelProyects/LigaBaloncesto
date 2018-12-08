@@ -17,13 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.application.Platform.exit;
 import model.Entrenador;
 import model.Persona;
 import utils.Contants;
 
 /**
  *
- * @author mohammed
+ * @author josep
  */
 
 
@@ -102,8 +103,11 @@ public class EntrenadorDaoImpl implements IEntrenadorDao{
                         + "VALUES "
                         + "('"+e.getDni()+"','"+e.getNivel()+"','"+e.getId_equipo()+"','"+e.getId_equipo()+"')");
             } catch (SQLException ex) {
-                Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("La persona no existe");
+                exit();
             }
+           
         //}
         
         return numTuplas1 > 0;
