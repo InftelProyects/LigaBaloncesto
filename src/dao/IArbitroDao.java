@@ -14,8 +14,10 @@ import model.Arbitro;
  */
 public interface IArbitroDao {
     Arbitro buscarPorDni(String dni);
-   // List<Entrenador> buscarTodos();
-    //boolean insertarEntrenador(Entrenador e);
+    public List<Arbitro> buscarTodos();
+    public boolean insertarArbitro(Arbitro a);
     //boolean eliminarPorDni(String dni);
    // boolean actualizarEntrenador(Entrenador e);
+
+    
 }

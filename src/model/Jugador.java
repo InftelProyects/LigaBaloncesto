@@ -11,7 +11,8 @@ package model;
 public class Jugador extends Persona{
     double altura,peso,id_equipo;
     int dorsal;
-
+    public Jugador(){
+    };
     public Jugador(double altura, double peso, double id_equipo, int dorsal) {
         this.altura = altura;
         this.peso = peso;

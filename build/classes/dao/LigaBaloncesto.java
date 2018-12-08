@@ -12,9 +12,9 @@ import dao.impl.EntrenadorDaoImpl;
 import dao.IEquipoDao;
 import dao.impl.EquipoDaoImpl;
 import dao.IArbitroDao;
-import dao.IJugadorDao;
+import dao.IPartidoDao;
 import dao.impl.ArbitroDaoImpl;
-import dao.impl.JugadorDaoImpl;
+import dao.impl.PartidoDaoImpl;
 import db.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,7 +30,6 @@ import model.Partido;
 import model.Persona;
 import model.Equipo;
 import model.Arbitro;
-import model.Jugador;
 //import oracle.net.aso.i;
 import utils.Contants;
 import utils.GeneradorEmparejamiento;
@@ -51,7 +50,7 @@ public class LigaBaloncesto {
         IEntrenadorDao entrenadorDao = new EntrenadorDaoImpl();
         IEquipoDao equipoDao = new EquipoDaoImpl();
         IArbitroDao arbitroDao = new ArbitroDaoImpl();
-        IJugadorDao jugadorDao = new JugadorDaoImpl();
+        IPartidoDao partidoDao = new PartidoDaoImpl();
         
 //MENÚ PARA HACER PRUEBAS
         int opcion;
@@ -69,7 +68,9 @@ public class LigaBaloncesto {
         System.out.println ("Buscar arbitro DNI:11");
         System.out.println ("Mostrar arbitros:12");
         System.out.println ("Añadir arbitro:13 ");
-        System.out.println ("Añadir jugador:14");
+        System.out.println ("Añadir partido:14 ");
+       //System.out.println ("Mostrar asistencias jugador ");
+       //System.out.println("// f. Agrupar los jugadores por la posición del campo y devolver para cada grupo la siguiente información: la media de canastas, asistencias y rebotes.");
       //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
       //System.out.println ("Añadir resultados partidos: ");
       //System.out.println ("Mostrar clasificacion: ");
@@ -149,16 +150,17 @@ public class LigaBaloncesto {
         }
         if(opcion==6){
             Equipo equipo = new Equipo();
-            System.out.println ("Nombre: ");
-                String temp= reader.next();
-                equipo.setNombre(temp);
             System.out.println ("Categoria: ");
-                temp= reader.next();
+                String temp= reader.next();
                 equipo.setCategoria(temp);
+            System.out.println ("Nombre: ");
+                temp= reader.next();
+                equipo.setNombre(temp);
+            
             System.out.println ("Provincia: ");
                 temp= reader.next();
                 equipo.setProvincia(temp);    
-            //equipo.setId_equipo(5);
+            equipo.setId_equipo(5);
             equipo.setPuntos(0);
              
             boolean insertarEquipo = equipoDao.insertarEquipo(equipo);
@@ -173,7 +175,7 @@ public class LigaBaloncesto {
             
             boolean eliminarPorIdEquipo = equipoDao.eliminarPorIdEquipo(nombre);
             if(eliminarPorIdEquipo){
-                 System.out.println("El equipo ha sido borrado correctamente");
+                 System.out.println("El equipo ha sido borrada correctamente");
             }else{
                  System.out.println("El equipo no ha sido borrado");
             }
@@ -207,15 +209,7 @@ public class LigaBaloncesto {
                 System.out.println(entrenador.toString());
             }
         } 
-        if(opcion==14){
-           
-           List<Equipo> listaDeEquipos = equipoDao.buscarTodos();
-           System.out.println();
-            for (int i=0; i<listaDeEquipos.size(); i++) {
-                Equipo equipo = listaDeEquipos.get(i);
-                System.out.println(equipo.toString());
-            }
-        }
+        
         if(opcion==10){
             String dni;
             System.out.println("Introduzca dni");
@@ -257,21 +251,34 @@ public class LigaBaloncesto {
         }
         
         if(opcion==14){
-            Jugador j = new Jugador();
-            System.out.println ("DNI: ");
+            Partido partido = new Partido();
+            System.out.println ("Fecha: ");
                 String temp= reader.next();
-                j.setDni(temp);
-            System.out.println ("Dorsal: ");
-               int temp2 = reader.nextInt();
-                j.setDorsal(temp2);
-            System.out.println ("Altura: ");
-               int  temp3 = reader.nextInt();
-                j.setAltura(temp3);
-            boolean insertarjugador = jugadorDao.insertarJugador(j);
-            if(insertarjugador){
-                System.out.println("El jugador  ha sido insertado correctamente");
-            }
-        }    
+                partido.setFecha(temp);
+            System.out.println ("Localizacion: ");
+                temp= reader.next();
+                partido.setLocalizacion(temp);   
+            System.out.println ("Resultado: ");
+                temp= reader.next();
+                partido.setResultado(temp);     
+            System.out.println ("Jornada: ");
+                int temp2= reader.nextInt();
+                partido.setJornada(temp2);      
+            System.out.println ("ID_VISITANTE: ");
+                temp2= reader.nextInt();
+                partido.setID_VISITANTE(temp2);    
+            System.out.println ("ID_LOCAL: ");
+                temp2= reader.nextInt();
+                partido.setID_LOCAL(temp2);   
+            System.out.println ("ID_PARTIDO: ");
+                temp2= reader.nextInt();
+                partido.setId_partido(temp2);   
+                
+            boolean partidoInsertado = partidoDao.insertarPartido(partido);
+            if (partidoInsertado) {
+                System.out.println("El partido ha sido insertado correctamente");
+            }   
+        }
         
         if(opcion==0){
            
