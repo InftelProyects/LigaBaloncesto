@@ -64,7 +64,7 @@ public class EquipoDaoImpl implements IEquipoDao{
             ResultSet resultado = stmt.executeQuery("SELECT * FROM EQUIPO");
             while (resultado.next()) {
                 int idEquipo = resultado.getInt("ID_EQUIPO");
-                String nombre = resultado.getString("NOMBRE");
+                String nombre = resultado.getString("NOMBRE_EQUIPO");
                 String categoria = resultado.getString("CATEGORIA");
                 String provencia = resultado.getString("PROVINCIA");
                 int puntos = resultado.getInt("PUNTOS");

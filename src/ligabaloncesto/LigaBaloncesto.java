@@ -144,17 +144,16 @@ public class LigaBaloncesto {
         }
         if(opcion==6){
             Equipo equipo = new Equipo();
-            System.out.println ("Categoria: ");
-                String temp= reader.next();
-                equipo.setCategoria(temp);
             System.out.println ("Nombre: ");
-                temp= reader.next();
+                String temp= reader.next();
                 equipo.setNombre(temp);
-            
+            System.out.println ("Categoria: ");
+                temp= reader.next();
+                equipo.setCategoria(temp);
             System.out.println ("Provincia: ");
                 temp= reader.next();
                 equipo.setProvincia(temp);    
-            equipo.setId_equipo(5);
+            //equipo.setId_equipo(5);
             equipo.setPuntos(0);
              
             boolean insertarEquipo = equipoDao.insertarEquipo(equipo);
@@ -169,7 +168,7 @@ public class LigaBaloncesto {
             
             boolean eliminarPorIdEquipo = equipoDao.eliminarPorIdEquipo(nombre);
             if(eliminarPorIdEquipo){
-                 System.out.println("El equipo ha sido borrada correctamente");
+                 System.out.println("El equipo ha sido borrado correctamente");
             }else{
                  System.out.println("El equipo no ha sido borrado");
             }
@@ -203,7 +202,15 @@ public class LigaBaloncesto {
                 System.out.println(entrenador.toString());
             }
         } 
-        
+        if(opcion==14){
+           
+           List<Equipo> listaDeEquipos = equipoDao.buscarTodos();
+           System.out.println();
+            for (int i=0; i<listaDeEquipos.size(); i++) {
+                Equipo equipo = listaDeEquipos.get(i);
+                System.out.println(equipo.toString());
+            }
+        }
         if(opcion==10){
             String dni;
             System.out.println("Introduzca dni");
