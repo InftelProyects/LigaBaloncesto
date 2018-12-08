@@ -82,27 +82,34 @@ public class EquipoDaoImpl implements IEquipoDao{
         return listaDeEquipos;
     }
 
-    @Override
+   @Override
     public boolean insertarEquipo(Equipo equipo) {
         int numTuplas1 = 0; 
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
         Equipo buscarPorIdEquipo =  buscarPorIdEquipo(equipo.getId_equipo());
-        if(buscarPorIdEquipo == null){
-             System.out.println("No existe ningun Equipo con EL ID "+equipo.getId_equipo());
-            Statement stmt;
+        Statement stmt;
+        //int mayorID=obtenerMayorID();
+        //mayorID++;
             try {
                 stmt = connection.createStatement();
+                ResultSet resultado = stmt.executeQuery("select id_equipo from equipo where id_equipo = (select max(id_equipo) from equipo)");
+                while (resultado.next()) {
+                int mayorID = resultado.getInt("ID_EQUIPO");
+                mayorID++;
                 numTuplas1 = stmt.executeUpdate("INSERT INTO EQUIPO "
-                        + "(ID_EQUIPO,NOMBRE,PROVINCIA,CATEGORIA,PUNTOS) "
+                        + "(ID_EQUIPO,NOMBRE_EQUIPO,PROVINCIA,CATEGORIA,PUNTOS) "
                         + "VALUES "
-                        + "("+equipo.getId_equipo()+",'"+equipo.getNombre()+"','"
+                        + "("+mayorID+",'"+equipo.getNombre()+"','"
                         +equipo.getProvincia()+"','"+ equipo.getCategoria()+"',"
-                        +equipo.getPuntos()+")");
+                        +0+")");
+                System.out.println("Euipo insertado correctamente con ID="+mayorID);
+                }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(PersonaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         }
         return numTuplas1 > 0;
     }
