@@ -19,6 +19,10 @@ public class Arbitro extends Persona{
         this.apellido=apellido;
     }
 
+    public Arbitro() {
+        
+    }
+
     public int getId_partido() {
         return id_partido;
     }

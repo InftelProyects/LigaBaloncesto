@@ -63,7 +63,8 @@ public class LigaBaloncesto {
         System.out.println ("Mostrar entrenadores:9");
         System.out.println ("Buscar entrenador DNI:10");
         System.out.println ("Buscar arbitro DNI:11");
-      //System.out.println ("Añadir arbitro: ");
+        System.out.println ("Mostrar arbitros:12");
+        System.out.println ("Añadir arbitro:13 ");
       //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
       //System.out.println ("Añadir resultados partidos: ");
       //System.out.println ("Mostrar clasificacion: ");
@@ -217,7 +218,32 @@ public class LigaBaloncesto {
             dni = reader.next();
             Arbitro arbitroPorDni = arbitroDao.buscarPorDni(dni);
             System.out.println("Arbitro buscado por dni: " + arbitroPorDni.toString());
+        } 
+        
+        if(opcion==12){
+           List<Arbitro> listaArbitros = arbitroDao.buscarTodos();
+           System.out.println();
+            for (int i=0; i<listaArbitros.size(); i++) {
+                Arbitro arbitro = listaArbitros.get(i);
+                System.out.println(arbitro.toString());
+            }
+        } 
+        
+        if(opcion==13){
+            Arbitro a = new Arbitro();
+            System.out.println ("DNI: ");
+                String temp= reader.next();
+                a.setDni(temp);
+            System.out.println ("Provincia: ");
+                temp= reader.next();
+                a.setProvincia(temp);
+                
+            boolean arbitroInsertado = arbitroDao.insertarArbitro(a);
+            if (arbitroInsertado) {
+                System.out.println("El arbitro ha sido insertado correctamente");
+            }
         }
+        
         if(opcion==0){
            
            exit();

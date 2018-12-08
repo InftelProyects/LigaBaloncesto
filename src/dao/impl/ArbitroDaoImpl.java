@@ -56,55 +56,55 @@ public class ArbitroDaoImpl implements IArbitroDao{
      *
      * @return
      */
-    /*
     @Override
-    public List<Entrenador> buscarTodos() {
+    public List<Arbitro> buscarTodos() {
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
-        List<Entrenador> listaEntrenadores = new ArrayList<>();
+        List<Arbitro> listaArbitros = new ArrayList<>();
         try {
             Statement stmt = connection.createStatement();
-            ResultSet resultado = stmt.executeQuery("SELECT persona.nombre,persona.apellidos,entrenador.nivel,equipo.nombre_equipo FROM ENTRENADOR,PERSONA,EQUIPO WHERE entrenador.dni=persona.dni AND entrenador.id_equipo=equipo.id_equipo");
+            ResultSet resultado = stmt.executeQuery("SELECT persona.nombre,persona.apellidos,arbitro.provincia FROM PERSONA,ARBITRO WHERE arbitro.dni=persona.dni");
             while (resultado.next()) {
                 String nombre = resultado.getString("nombre");
                 String apellidos = resultado.getString("apellidos");
-                String nivel = resultado.getString("nivel");
-                String nombre_equipo = resultado.getString("nombre_equipo");
+                String provincia = resultado.getString("provincia");
                 
-                Entrenador entrenador = new Entrenador(nombre,apellidos,nivel,nombre_equipo);
-                listaEntrenadores.add(entrenador);
+                Arbitro arbitro = new Arbitro(nombre,apellidos,provincia);
+                listaArbitros.add(arbitro);
             }
         } catch (SQLException ex) {
             System.out.println("Query error: " + ex.getMessage());
         }
-        return listaEntrenadores;
-    }
+        return listaArbitros;
+    } 
+
+  
     @Override
-    public boolean insertarEntrenador(Entrenador e) {
+    public boolean insertarArbitro(Arbitro a) {
         int numTuplas1 = 0;
-        Persona p;
+        //Persona p;
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
         //Persona buscarPorDni = IPersonaDao.buscarPorDni(e.getDni());
-        if(buscarPorDni == null){
+        /*if(buscarPorDni == null){
             
            System.out.println("El entrenador con DNI "+e.getDni() +" no existe ");
             
-        }else{
+        }else{*/
             
-            System.out.println("El entrenador con DNI "+e.getDni() +" existe ");
+            //System.out.println("El arbitro con DNI "+a.getDni() +" existe ");
             Statement stmt;
             try {
                 stmt = connection.createStatement();
-                numTuplas1 = stmt.executeUpdate("INSERT INTO ENTRENADOR "
-                        + "(DNI,NIVEL,EQUIPO_ID_EQUIPO,ID_EQUIPO) "
+                numTuplas1 = stmt.executeUpdate("INSERT INTO ARBITRO "
+                        + "(DNI,PROVINCIA) "
                         + "VALUES "
-                        + "('"+e.getDni()+"','"+e.getNivel()+"','"+e.getId_equipo()+"','"+e.getId_equipo()+"')");
+                        + "('"+a.getDni()+"','"+a.getProvincia()+"')");
             } catch (SQLException ex) {
                 //Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("La persona no existe");
+                System.out.println("El arbitro no existe");
                 exit();
             }
            
@@ -113,6 +113,7 @@ public class ArbitroDaoImpl implements IArbitroDao{
         return numTuplas1 > 0;
     }
 
+ /*
     @Override
     public boolean eliminarPorDni(String dni) {
          int numTuplas1 = 0;
