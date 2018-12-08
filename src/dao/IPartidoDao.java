@@ -13,9 +13,9 @@ import model.Partido;
  * @author mohammed
  */
 public interface IPartidoDao {   
-    Partido Buscar(int id_partido);
+    Partido BuscarPorIdPartido(int id_partido);
     List<Partido> BuscarTodosLospartidos();
-    boolean insertarPartido(int id);
+    boolean insertarPartido(Partido p);
     boolean eliminarPartido(int id);
     boolean actualizarPartidos(Partido partido);   
 }
