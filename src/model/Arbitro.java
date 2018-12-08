@@ -11,10 +11,9 @@ package model;
  */
 public class Arbitro extends Persona{
     int id_partido;
-    char provincia;
+    String provincia;
 
-    public Arbitro(String nombre, String apellido, int id_partido, char provincia) {
-        this.id_partido = id_partido;
+    public Arbitro(String nombre, String apellido,String provincia) {
         this.provincia = provincia;
         this.nombre= nombre;
         this.apellido=apellido;
@@ -28,11 +27,11 @@ public class Arbitro extends Persona{
         this.id_partido = id_partido;
     }
 
-    public char getProvincia() {
+    public String getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(char provincia) {
+    public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
 

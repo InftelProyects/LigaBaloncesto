@@ -11,6 +11,8 @@ import dao.IEntrenadorDao;
 import dao.impl.EntrenadorDaoImpl;
 import dao.IEquipoDao;
 import dao.impl.EquipoDaoImpl;
+import dao.IArbitroDao;
+import dao.impl.ArbitroDaoImpl;
 import db.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,6 +27,7 @@ import model.Entrenador;
 import model.Partido;
 import model.Persona;
 import model.Equipo;
+import model.Arbitro;
 //import oracle.net.aso.i;
 import utils.Contants;
 import utils.GeneradorEmparejamiento;
@@ -44,6 +47,7 @@ public class LigaBaloncesto {
         IPersonaDao personaDao = new PersonaDaoImpl();
         IEntrenadorDao entrenadorDao = new EntrenadorDaoImpl();
         IEquipoDao equipoDao = new EquipoDaoImpl();
+        IArbitroDao arbitroDao = new ArbitroDaoImpl();
         
 //MENÚ PARA HACER PRUEBAS
         int opcion;
@@ -55,9 +59,10 @@ public class LigaBaloncesto {
         System.out.println ("Crear emparejamientos:5");
         System.out.println ("Añadir equipo: 6");
         System.out.println ("Eliminar equipo por nombre: 7");   
-      //System.out.println ("Añadir entrenador: 8"); //Debe existir el equipo
+        System.out.println ("Añadir entrenador: 8"); //Debe existir el equipo
         System.out.println ("Mostrar entrenadores:9");
         System.out.println ("Buscar entrenador DNI:10");
+        System.out.println ("Buscar arbitro DNI:11");
       //System.out.println ("Añadir arbitro: ");
       //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
       //System.out.println ("Añadir resultados partidos: ");
@@ -204,6 +209,14 @@ public class LigaBaloncesto {
             dni = reader.next();
             Entrenador entrenadorPorDni = entrenadorDao.buscarPorDni(dni);
             System.out.println("Entrenador buscado por dni: " + entrenadorPorDni.toString());
+        }
+        
+        if(opcion==11){
+            String dni;
+            System.out.println("Introduzca dni");
+            dni = reader.next();
+            Arbitro arbitroPorDni = arbitroDao.buscarPorDni(dni);
+            System.out.println("Arbitro buscado por dni: " + arbitroPorDni.toString());
         }
         if(opcion==0){
            
