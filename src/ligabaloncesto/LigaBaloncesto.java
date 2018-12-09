@@ -80,7 +80,9 @@ public class LigaBaloncesto {
         System.out.println ("Mostrar clasificacion:18");
         System.out.println ("Añadir resultados partidos:19 ");
         System.out.println ("Mostrar partido por ID:20");
-        System.out.println ("Mostrar partido por ID:23");
+        System.out.println ("Insertar Partido:23");
+        System.out.println ("Eliminar Entrenador:24");
+        System.out.println ("Actualizar entrenador por DNI:25");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -242,7 +244,7 @@ public class LigaBaloncesto {
            System.out.println();
             for (int i=0; i<listaEquipos.size(); i++) {
                 Equipo equipo = listaEquipos.get(i);               
-                System.out.println(equipo.toString2());
+              System.out.println(equipo.toString2());
             }
         }
         
@@ -365,8 +367,8 @@ public class LigaBaloncesto {
                 String temp= reader.next();
                 j.setFecha(temp);
             System.out.println ("localizaciin: ");
-               String temp2 = reader.next();
-                j.setLocalizacion(temp2);
+                temp= reader.next();
+                j.setLocalizacion(temp);
             System.out.println ("id_partido: ");
                int  temp4 = reader.nextInt();
                 j.setId_partido(temp4);     
@@ -381,12 +383,12 @@ public class LigaBaloncesto {
                 j.setJornada(temp7);    
             
             System.out.println ("ID_LOCAL: ");
-               String  temp8 = reader.next();
-               j.setNombre_LOCAL(temp8);
+               int  temp8 = reader.nextInt();
+               j.setID_LOCAL(temp8);
              
             System.out.println ("ID_visitante: ");
-               String  temp9 = reader.next();
-               j.setNombre_LOCAL(temp9);  
+              temp8 = reader.nextInt();
+               j.setID_VISITANTE(temp8);  
                 
             boolean insertar = partidoDao.insertarPartido(j);
             if(insertar){
@@ -394,6 +396,25 @@ public class LigaBaloncesto {
             }
         }  
         
+         if(opcion==24){
+            Entrenador e = new Entrenador();
+            System.out.println ("DNI: ");
+            String temp= reader.next();
+            e.setDni(temp);
+            entrenadorDao.eliminarPorDniEntrenador(temp);
+        }
+         
+         if(opcion==25){
+            Entrenador e = new Entrenador();
+            System.out.println ("DNI: ");
+            String temp= reader.next();
+            e.setDni(temp);
+            System.out.println ("NIVEL: ");
+            temp= reader.next();
+            e.setNivel(temp);
+            entrenadorDao.actualizarEntrenador(e);
+        }
+         
         if(opcion==0){
            
            exit();

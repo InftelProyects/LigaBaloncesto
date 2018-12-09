@@ -16,6 +16,6 @@ public interface IEntrenadorDao {
     Entrenador buscarPorDni(String dni);
     List<Entrenador> buscarTodos();
     boolean insertarEntrenador(Entrenador e);
-    //boolean eliminarPorDni(String dni);
-   // boolean actualizarEntrenador(Entrenador e);
+    boolean eliminarPorDniEntrenador(String dni);
+    boolean actualizarEntrenador(Entrenador e);
 }

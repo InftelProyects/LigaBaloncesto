@@ -130,12 +130,12 @@ public class PartidoDaoImpl implements IPartidoDao{
             try {
                 stmt = connection.createStatement();
                 
-                numTuplas1 = stmt.executeUpdate("INSERT INTO PARTIDO (FECHA,LOCALIZACION,ID_PARTIDO,RESULTADO_LOCAL"
-                        + ",RESULTADO_VISITANTE,JORNADA,NOMBRE_VISITANTE,NOMBRE_LOCAL) "
+                numTuplas1 = stmt.executeUpdate("INSERT INTO PARTIDO "
+                        + "(ID_PARTIDO,FECHA,LOCALIZACION,ID_VISITANTE,ID_LOCAL,RESULTADO_LOCAL,JORNADA,RESULTADO_VISITANTE,NOMBRE_VISITANTE,NOMBRE_LOCAL) "
                         + "VALUES "
-                        + "('"+p.getFecha()+"','"+p.getLocalizacion()+"','"+p.getId_partido()+"','"
-                        +p.getResultado_local()+"','"+p.getResultado_visitante() +"','"+p.getJornada()
-                        +"','"+p.getNombre_VISITANTE()+"'+'"+p.getNombre_LOCAL()+"')");
+                        + "('"+p.getId_partido()+"','"+p.getFecha()+"','"+p.getLocalizacion()
+                        +"','"+p.getID_VISITANTE()+"','"+p.getID_LOCAL()+"','"+p.getResultado_local()
+                        +"','"+p.getJornada()+"','"+p.getResultado_visitante()+"','"+p.getNombre_VISITANTE()+"','"+p.getNombre_LOCAL()+"')");
             } catch (SQLException ex) {
                 Logger.getLogger(PartidoDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
