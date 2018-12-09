@@ -77,8 +77,9 @@ public class LigaBaloncesto {
         System.out.println ("Mostrar entrenadores:16");
         System.out.println ("Mostrar partidos:17");
       //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
-      //System.out.println ("Añadir resultados partidos: ");
         System.out.println ("Mostrar clasificacion:18");
+        System.out.println ("Añadir resultados partidos:19 ");
+        System.out.println ("Mostrar partido por ID:20");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -236,7 +237,7 @@ public class LigaBaloncesto {
            
            List<Equipo> listaEquipos = equipoDao.MostrarClasificacion();
            System.out.println();
-           System.out.println("La calsificacion de los equipos en la liga es la siguiente:");
+           System.out.println("La clasificacion de los equipos en la liga es la siguiente:");
            System.out.println();
             for (int i=0; i<listaEquipos.size(); i++) {
                 Equipo equipo = listaEquipos.get(i);               
@@ -260,6 +261,13 @@ public class LigaBaloncesto {
             if (insertarResultados) {
                 System.out.println("Resultados insertados");
             }
+        }
+        if(opcion==20){
+            int id;
+            System.out.println("Introduzca ID del partido");
+            id = reader.nextInt();
+            Partido PartidoPorID = partidoDao.BuscarPorIdPartido(id);
+            System.out.println(PartidoPorID.toString());
         }
         
         if(opcion==10){

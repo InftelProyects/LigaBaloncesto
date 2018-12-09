@@ -30,25 +30,24 @@ public class PartidoDaoImpl implements IPartidoDao{
     
     @Override
     
-    public Partido BuscarPorIdPartido(int id_partido) {
+    public Partido BuscarPorIdPartido(int id) {
            DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
         try {
             Statement stmt = connection.createStatement();
-            ResultSet resultado = stmt.executeQuery("SELECT * FROM PARTIDO WHERE ID_PARTIDO='" +id_partido+ "'");
+            ResultSet resultado = stmt.executeQuery("SELECT * FROM PARTIDO WHERE ID_PARTIDO='" +id+ "'");
             while (resultado.next()) {
-             
+                int id_partido = resultado.getInt("id_partido");
                 String fecha = resultado.getString("fecha");
                 String localizacion = resultado.getString("localizacion");
-               // id_partido = resultado.getInt("id_partido");
-                int resultad = resultado.getInt("RESULTADO");
+                int resultado_local = resultado.getInt("RESULTADO_LOCAL");
+                int resultado_visitante = resultado.getInt("RESULTADO_VISITANTE");
                 int jornada  = resultado.getInt("jornada");
-                int idVisitante = resultado.getInt("id_visitante");
-                int idLocal = resultado.getInt("id_local");
+                String nombre_local = resultado.getString("NOMBRE_LOCAL");
+                String nombre_visitante = resultado.getString("NOMBRE_VISITANTE");
              
-               // return new Partido (fecha,localizacion , id_partido, resultad ,
-                       // jornada, idVisitante, idLocal);
+               return new Partido(fecha ,localizacion ,id_partido ,resultado_local,resultado_visitante,jornada,nombre_visitante,nombre_local);
             }
         } catch (SQLException ex) {
             System.out.println("Query error: " + ex.getMessage());
