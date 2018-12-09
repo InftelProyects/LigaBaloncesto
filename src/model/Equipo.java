@@ -24,6 +24,11 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    public Equipo(String nombre, int puntos) {
+        this.nombre = nombre;
+        this.puntos = puntos;
+    }
+
     public Equipo() {
        
     }
@@ -73,7 +78,9 @@ public class Equipo {
         return nombre + ", categoria= " + categoria + ", provincia= " + provincia + ", puntos= " + puntos;
     }
 
-    
+    public String toString2() {
+        return nombre + ", puntos= " + puntos;
+    }
 
     
 }

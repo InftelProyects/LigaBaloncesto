@@ -81,6 +81,36 @@ public class EquipoDaoImpl implements IEquipoDao{
         
         return listaDeEquipos;
     }
+        
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<Equipo> MostrarClasificacion() {
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        List<Equipo> listaDeEquipos = new ArrayList<>();
+         Statement stmt;
+        try {
+            stmt = connection.createStatement();
+            ResultSet resultado = stmt.executeQuery("select nombre_equipo,puntos from equipo order by puntos desc");
+            while (resultado.next()) {
+               
+                String nombre = resultado.getString("NOMBRE_EQUIPO");
+                int puntos = resultado.getInt("PUNTOS");
+                
+                Equipo equipo = new Equipo(nombre,puntos);
+                listaDeEquipos.add(equipo);
+                
+            }    
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipoDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaDeEquipos;
+    }
 
    @Override
     public boolean insertarEquipo(Equipo equipo) {

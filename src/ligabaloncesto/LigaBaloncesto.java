@@ -78,7 +78,7 @@ public class LigaBaloncesto {
         System.out.println ("Mostrar partidos:17");
       //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
       //System.out.println ("Añadir resultados partidos: ");
-      //System.out.println ("Mostrar clasificacion: ");
+        System.out.println ("Mostrar clasificacion:18");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -229,6 +229,18 @@ public class LigaBaloncesto {
             for (int i=0; i<listaDePartidos.size(); i++) {
                Partido partido = listaDePartidos.get(i);
                 System.out.println(partido.toString());
+            }
+        }
+        
+        if(opcion==18){
+           
+           List<Equipo> listaEquipos = equipoDao.MostrarClasificacion();
+           System.out.println();
+           System.out.println("La calsificacion de los equipos en la liga es la siguiente:");
+           System.out.println();
+            for (int i=0; i<listaEquipos.size(); i++) {
+                Equipo equipo = listaEquipos.get(i);               
+                System.out.println(equipo.toString2());
             }
         }
         

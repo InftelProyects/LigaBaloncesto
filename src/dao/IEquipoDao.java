@@ -15,6 +15,7 @@ import model.Equipo;
 public interface IEquipoDao {
     
     List<Equipo> buscarTodos();
+    List<Equipo> MostrarClasificacion();
     boolean insertarEquipo(Equipo equipo);  
     boolean eliminarPorNombreEquipo(String nombre);
     boolean actualizarEquipo(Equipo equipo);
