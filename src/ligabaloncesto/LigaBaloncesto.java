@@ -248,10 +248,14 @@ public class LigaBaloncesto {
         if(opcion==19){
             Partido partido  = new Partido();
             System.out.println ("ID: ");
-                int temp= reader.nextInt();
-                partido.setId_partido(temp);
+                int id= reader.nextInt();
+                Partido PartidoPorID = partidoDao.BuscarPorIdPartido(id);
+                System.out.println();
+                System.out.println(PartidoPorID.toString2());
+                System.out.println();
+                partido.setId_partido(id);
             System.out.println ("Resultado Visitante: ");
-                temp= reader.nextInt();
+                int temp= reader.nextInt();
                 partido.setResultado_visitante(temp);
             System.out.println ("Resultado Local: ");
                 temp= reader.nextInt();

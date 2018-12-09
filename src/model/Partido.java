@@ -46,12 +46,18 @@ public class Partido {
         
     }
 
-    @Override
-    public String toString() {
-        return Nombre_VISITANTE + " VS " + Nombre_LOCAL  + ", fecha=" + fecha + ", localizacion=" + localizacion + ", id_partido=" + id_partido + ", resultado_local=" + resultado_local + ", resultado_visitante=" + resultado_visitante + ", jornada=" + jornada + '}';
+    public Partido(String fecha, String localizacion, String nombre_visitante, String nombre_local) {
+       
     }
 
-    
+    @Override
+    public String toString() {
+        return Nombre_LOCAL + " VS " + Nombre_VISITANTE  + ", fecha=" + fecha + ", localizacion=" + localizacion + ", id_partido=" + id_partido + ", resultado_local=" + resultado_local + ", resultado_visitante=" + resultado_visitante + ", jornada=" + jornada + '}';
+    }
+
+    public String toString2() {
+        return "LOCAL: "+ Nombre_LOCAL + "\nVISITANTE: " + Nombre_VISITANTE;
+    }
 
     public String getFecha() {
         return fecha;

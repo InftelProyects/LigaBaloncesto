@@ -55,6 +55,29 @@ public class PartidoDaoImpl implements IPartidoDao{
         return null;
     }
 
+    public Partido BuscarPorIdPartido2(int id) {
+           DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultado = stmt.executeQuery("SELECT * FROM PARTIDO WHERE ID_PARTIDO='" +id+ "'");
+            while (resultado.next()) {
+                
+                String fecha = resultado.getString("fecha");
+                String localizacion = resultado.getString("localizacion");
+                String nombre_local = resultado.getString("NOMBRE_LOCAL");
+                String nombre_visitante = resultado.getString("NOMBRE_VISITANTE");
+             
+               return new Partido(fecha ,localizacion ,nombre_visitante,nombre_local);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Query error: " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    
     @Override
     public List<Partido> BuscarTodosLospartidos() {
            List<Partido> listaPartidos = new ArrayList<>();
@@ -116,7 +139,7 @@ public class PartidoDaoImpl implements IPartidoDao{
                         + "SET resultado_local ="+partido.getResultado_local()+", resultado_visitante ="+partido.getResultado_visitante()
                         + "WHERE id_partido="+partido.getId_partido()
                         );
-                System.out.println("Resultados insertados");
+                //System.out.println("Resultados insertados");
                // }
                 
             } catch (SQLException ex) {
