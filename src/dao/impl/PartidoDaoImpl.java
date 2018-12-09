@@ -28,6 +28,7 @@ public class PartidoDaoImpl implements IPartidoDao{
     
     
     @Override
+    
     public Partido BuscarPorIdPartido(int id_partido) {
            DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
@@ -39,14 +40,14 @@ public class PartidoDaoImpl implements IPartidoDao{
              
                 String fecha = resultado.getString("fecha");
                 String localizacion = resultado.getString("localizacion");
-                id_partido = resultado.getInt("id_partido");
+               // id_partido = resultado.getInt("id_partido");
                 int resultad = resultado.getInt("RESULTADO");
                 int jornada  = resultado.getInt("jornada");
                 int idVisitante = resultado.getInt("id_visitante");
                 int idLocal = resultado.getInt("id_local");
              
-                return new Partido (fecha,localizacion , id_partido, resultad ,
-                        jornada, idVisitante, idLocal);
+               // return new Partido (fecha,localizacion , id_partido, resultad ,
+                       // jornada, idVisitante, idLocal);
             }
         } catch (SQLException ex) {
             System.out.println("Query error: " + ex.getMessage());
@@ -62,17 +63,17 @@ public class PartidoDaoImpl implements IPartidoDao{
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
         try {
             Statement stm = connection.createStatement();
-            ResultSet resultado = stm.executeQuery("Select * FFROM PARTIDO");
+            ResultSet resultado = stm.executeQuery("Select * FROM PARTIDO");
             while(resultado.next()){
+                int id_partido = resultado.getInt("id_partido");
                 String fecha = resultado.getString("fecha");
                 String localizacion = resultado.getString("localizacion");
-                int id_partido = resultado.getInt("id_partido");
-                int resultad = resultado.getInt("RESULTADO");
+                int resultado_local = resultado.getInt("RESULTADO_LOCAL");
+                int resultado_visitante = resultado.getInt("RESULTADO_VISITANTE");
                 int jornada  = resultado.getInt("jornada");
-                int idVisitante = resultado.getInt("id_visitante");
-                int idLocal = resultado.getInt("id_local");
-               Partido partido = new Partido(fecha ,localizacion ,id_partido ,resultad
-                       ,jornada , idVisitante ,idLocal );
+                String nombre_local = resultado.getString("NOMBRE_LOCAL");
+                String nombre_visitante = resultado.getString("NOMBRE_VISITANTE");
+               Partido partido = new Partido(fecha ,localizacion ,id_partido ,resultado_local,resultado_visitante,jornada,nombre_visitante,nombre_local);
                listaPartidos.add(partido);
             }
         } catch (SQLException ex) {

@@ -13,8 +13,10 @@ import dao.IEquipoDao;
 import dao.impl.EquipoDaoImpl;
 import dao.IArbitroDao;
 import dao.IJugadorDao;
+import dao.IPartidoDao;
 import dao.impl.ArbitroDaoImpl;
 import dao.impl.JugadorDaoImpl;
+import dao.impl.PartidoDaoImpl;
 import db.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -52,6 +54,7 @@ public class LigaBaloncesto {
         IEquipoDao equipoDao = new EquipoDaoImpl();
         IArbitroDao arbitroDao = new ArbitroDaoImpl();
         IJugadorDao jugadorDao = new JugadorDaoImpl();
+        IPartidoDao partidoDao = new PartidoDaoImpl();
         
 //MENÚ PARA HACER PRUEBAS
         int opcion;
@@ -70,10 +73,12 @@ public class LigaBaloncesto {
         System.out.println ("Mostrar arbitros:12");
         System.out.println ("Añadir arbitro:13 ");
         System.out.println ("Añadir jugador:14");
+        System.out.println ("Buscar Equipo:15");
+        System.out.println ("Mostrar entrenadores:16");
+        System.out.println ("Mostrar partidos:17");
       //System.out.println ("Crear Liga: "); //Se selccionan los equipos y se crean las jornadas con round roubin
       //System.out.println ("Añadir resultados partidos: ");
       //System.out.println ("Mostrar clasificacion: ");
-      //System.out.println ("Buscar equipos: ");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -207,7 +212,7 @@ public class LigaBaloncesto {
                 System.out.println(entrenador.toString());
             }
         } 
-        if(opcion==14){
+        if(opcion==16){
            
            List<Equipo> listaDeEquipos = equipoDao.buscarTodos();
            System.out.println();
@@ -216,6 +221,17 @@ public class LigaBaloncesto {
                 System.out.println(equipo.toString());
             }
         }
+        
+        if(opcion==17){
+           
+           List<Partido> listaDePartidos = partidoDao.BuscarTodosLospartidos();
+           System.out.println();
+            for (int i=0; i<listaDePartidos.size(); i++) {
+               Partido partido = listaDePartidos.get(i);
+                System.out.println(partido.toString());
+            }
+        }
+        
         if(opcion==10){
             String dni;
             System.out.println("Introduzca dni");

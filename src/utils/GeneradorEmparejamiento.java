@@ -54,8 +54,8 @@ public class GeneradorEmparejamiento {
     public List<Partido> mostrar(){
         List<Partido> listaPartidos = new ArrayList<>();
         for (int i = 0, j=equipos.size()-1; i<j; i++, j--) {
-            Partido p = new Partido("10", "10", 0, 0, 0, equipos.get(i).getId_equipo(), equipos.get(j).getId_equipo());
-            listaPartidos.add(p);
+            //Partido p = new Partido("10", "10", 0, 0, 0, equipos.get(i).getId_equipo(), equipos.get(j).getId_equipo());
+            //listaPartidos.add(p);
             System.out.println(equipos.get(i).getId_equipo()+" vs "+ equipos.get(j).getId_equipo());
         }
         System.out.println("*************************************");

@@ -17,74 +17,31 @@ public class Partido {
     private String fecha;
     private String localizacion;
     private int id_partido;
-    private int resultado;
+    private int resultado_local;
+    private int resultado_visitante;
     private int jornada;
     private int ID_VISITANTE;
     private int ID_LOCAL;
+    private String Nombre_VISITANTE;
+    private String Nombre_LOCAL;
 
-    @Override
-    public String toString() {
-        return "Partido{" + "fecha=" + fecha + ", resultado=" + resultado + ", ID_VISITANTE=" + ID_VISITANTE + ", ID_LOCAL=" + ID_LOCAL + '}';
-    }
-
-    public Partido(String fecha, String localizacion, int id_partido, int resultado, int jornada, int ID_VISITANTE, int ID_LOCAL) {
+    public Partido(String fecha, String localizacion, int id_partido, int resultado_local, int resultado_visitante, int jornada, String Nombre_VISITANTE, String Nombre_LOCAL) {
         this.fecha = fecha;
         this.localizacion = localizacion;
         this.id_partido = id_partido;
-        this.resultado = resultado;
+        this.resultado_local = resultado_local;
+        this.resultado_visitante = resultado_visitante;
         this.jornada = jornada;
-        this.ID_VISITANTE = ID_VISITANTE;
-        this.ID_LOCAL = ID_LOCAL;
+        this.Nombre_VISITANTE = Nombre_VISITANTE;
+        this.Nombre_LOCAL = Nombre_LOCAL;
     }
 
     @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.fecha);
-        hash = 37 * hash + Objects.hashCode(this.localizacion);
-        hash = 37 * hash + this.id_partido;
-        hash = 37 * hash + this.resultado;
-        hash = 37 * hash + this.jornada;
-        hash = 37 * hash + this.ID_VISITANTE;
-        hash = 37 * hash + this.ID_LOCAL;
-        return hash;
+    public String toString() {
+        return Nombre_VISITANTE + " VS " + Nombre_LOCAL  + ", fecha=" + fecha + ", localizacion=" + localizacion + ", id_partido=" + id_partido + ", resultado_local=" + resultado_local + ", resultado_visitante=" + resultado_visitante + ", jornada=" + jornada + '}';
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Partido other = (Partido) obj;
-        if (this.id_partido != other.id_partido) {
-            return false;
-        }
-        if (this.resultado != other.resultado) {
-            return false;
-        }
-        if (this.jornada != other.jornada) {
-            return false;
-        }
-        if (this.ID_VISITANTE != other.ID_VISITANTE) {
-            return false;
-        }
-        if (this.ID_LOCAL != other.ID_LOCAL) {
-            return false;
-        }
-        if (!Objects.equals(this.fecha, other.fecha)) {
-            return false;
-        }
-        if (!Objects.equals(this.localizacion, other.localizacion)) {
-            return false;
-        }
-        return true;
-    }
+    
 
     public String getFecha() {
         return fecha;
@@ -110,12 +67,20 @@ public class Partido {
         this.id_partido = id_partido;
     }
 
-    public int getResultado() {
-        return resultado;
+    public int getResultado_local() {
+        return resultado_local;
     }
 
-    public void setResultado(int resultado) {
-        this.resultado = resultado;
+    public void setResultado_local(int resultado_local) {
+        this.resultado_local = resultado_local;
+    }
+
+    public int getResultado_visitante() {
+        return resultado_visitante;
+    }
+
+    public void setResultado_visitante(int resultado_visitante) {
+        this.resultado_visitante = resultado_visitante;
     }
 
     public int getJornada() {
@@ -141,13 +106,24 @@ public class Partido {
     public void setID_LOCAL(int ID_LOCAL) {
         this.ID_LOCAL = ID_LOCAL;
     }
-    
 
-    
-    public int resultados(){ //Calcula el resultado del partido segun los puntos de cda equipo
-        return 0;
-        
+    public String getNombre_VISITANTE() {
+        return Nombre_VISITANTE;
     }
+
+    public void setNombre_VISITANTE(String Nombre_VISITANTE) {
+        this.Nombre_VISITANTE = Nombre_VISITANTE;
+    }
+
+    public String getNombre_LOCAL() {
+        return Nombre_LOCAL;
+    }
+
+    public void setNombre_LOCAL(String Nombre_LOCAL) {
+        this.Nombre_LOCAL = Nombre_LOCAL;
+    }
+
+   
    
 
     
