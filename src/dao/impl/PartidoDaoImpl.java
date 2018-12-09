@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Equipo;
 import model.Partido;
 import model.Persona;
 import utils.Contants;
@@ -99,5 +100,31 @@ public class PartidoDaoImpl implements IPartidoDao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public boolean insertarResultadosPartidos(Partido partido) {
+        int numTuplas1 = 0; 
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        //Equipo buscarPorIdEquipo =  buscarPorIdEquipo(equipo.getId_equipo());
+        Statement stmt;
+        //int mayorID=obtenerMayorID();
+        //mayorID++;
+            try {
+                stmt = connection.createStatement();
+                //ResultSet resultado = stmt.executeQuery("select id_partido from partido where id_partido ='"+id_partido+"'" );
+                //while (resultado.next()) {
+                numTuplas1 = stmt.executeUpdate("UPDATE PARTIDO "
+                        + "SET resultado_local ="+partido.getResultado_local()+", resultado_visitante ="+partido.getResultado_visitante()
+                        + "WHERE id_partido="+partido.getId_partido()
+                        );
+                System.out.println("Resultados insertados");
+               // }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error de valor");
+        }
+        return numTuplas1 > 0;
+    }
     
 }

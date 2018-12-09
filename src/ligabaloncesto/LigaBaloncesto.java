@@ -244,6 +244,24 @@ public class LigaBaloncesto {
             }
         }
         
+        if(opcion==19){
+            Partido partido  = new Partido();
+            System.out.println ("ID: ");
+                int temp= reader.nextInt();
+                partido.setId_partido(temp);
+            System.out.println ("Resultado Visitante: ");
+                temp= reader.nextInt();
+                partido.setResultado_visitante(temp);
+            System.out.println ("Resultado Local: ");
+                temp= reader.nextInt();
+                partido.setResultado_local(temp);    
+    
+            boolean insertarResultados = partidoDao.insertarResultadosPartidos(partido);
+            if (insertarResultados) {
+                System.out.println("Resultados insertados");
+            }
+        }
+        
         if(opcion==10){
             String dni;
             System.out.println("Introduzca dni");

@@ -18,4 +18,6 @@ public interface IPartidoDao {
     boolean insertarPartido(Partido p);
     boolean eliminarPartido(int id);
     boolean actualizarPartidos(Partido partido);   
+
+    public boolean insertarResultadosPartidos(Partido partido);
 }

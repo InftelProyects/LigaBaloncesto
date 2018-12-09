@@ -36,6 +36,16 @@ public class Partido {
         this.Nombre_LOCAL = Nombre_LOCAL;
     }
 
+    public Partido(int id_partido, int resultado_local, int resultado_visitante) {
+        this.id_partido = id_partido;
+        this.resultado_local = resultado_local;
+        this.resultado_visitante = resultado_visitante;
+    }
+
+    public Partido() {
+        
+    }
+
     @Override
     public String toString() {
         return Nombre_VISITANTE + " VS " + Nombre_LOCAL  + ", fecha=" + fecha + ", localizacion=" + localizacion + ", id_partido=" + id_partido + ", resultado_local=" + resultado_local + ", resultado_visitante=" + resultado_visitante + ", jornada=" + jornada + '}';
