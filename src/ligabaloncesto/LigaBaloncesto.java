@@ -80,6 +80,7 @@ public class LigaBaloncesto {
         System.out.println ("Mostrar clasificacion:18");
         System.out.println ("Añadir resultados partidos:19 ");
         System.out.println ("Mostrar partido por ID:20");
+        System.out.println ("Mostrar partido por ID:23");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -358,6 +359,41 @@ public class LigaBaloncesto {
            arbitroDao.actualizarArbitro(a);
         } 
 
+         if(opcion==23){
+            Partido j = new Partido();
+            System.out.println ("fecha: ");
+                String temp= reader.next();
+                j.setFecha(temp);
+            System.out.println ("localizaciin: ");
+               String temp2 = reader.next();
+                j.setLocalizacion(temp2);
+            System.out.println ("id_partido: ");
+               int  temp4 = reader.nextInt();
+                j.setId_partido(temp4);     
+            System.out.println ("rsultado_local: ");
+               int  temp5 = reader.nextInt();
+                j.setResultado_local(temp5);
+            System.out.println ("rsultado_visitante: ");
+               int  temp6 = reader.nextInt();
+                j.setResultado_visitante(temp6);    
+            System.out.println ("jornada: ");
+               int  temp7 = reader.nextInt();
+                j.setJornada(temp7);    
+            
+            System.out.println ("ID_LOCAL: ");
+               String  temp8 = reader.next();
+               j.setNombre_LOCAL(temp8);
+             
+            System.out.println ("ID_visitante: ");
+               String  temp9 = reader.next();
+               j.setNombre_LOCAL(temp9);  
+                
+            boolean insertar = partidoDao.insertarPartido(j);
+            if(insertar){
+                System.out.println("El jugador  ha sido insertado correctamente");
+            }
+        }  
+        
         if(opcion==0){
            
            exit();

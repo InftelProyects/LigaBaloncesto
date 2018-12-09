@@ -119,7 +119,33 @@ public class PartidoDaoImpl implements IPartidoDao{
 
     @Override
     public boolean insertarPartido(Partido p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int numTuplas1 = 0;
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        Connection connection = databaseConnector.getConnection(
+                Contants.URL, Contants.USERNAME, Contants.PASSWORD);
+        Partido buscarPartidoPorId = BuscarPorIdPartido(p.getId_partido());
+        if(buscarPartidoPorId == null){
+            System.out.println("No existe ninguN partido con id "+p.getId_partido());
+            Statement stmt;
+            try {
+                stmt = connection.createStatement();
+                
+                numTuplas1 = stmt.executeUpdate("INSERT INTO PARTIDO (FECHA,LOCALIZACION,ID_PARTIDO,RESULTADO_LOCAL"
+                        + ",RESULTADO_VISITANTE,JORNADA,NOMBRE_VISITANTE,NOMBRE_LOCAL) "
+                        + "VALUES "
+                        + "('"+p.getFecha()+"','"+p.getLocalizacion()+"','"+p.getId_partido()+"','"
+                        +p.getResultado_local()+"','"+p.getResultado_visitante() +"','"+p.getJornada()
+                        +"','"+p.getNombre_VISITANTE()+"'+'"+p.getNombre_LOCAL()+"')");
+            } catch (SQLException ex) {
+                Logger.getLogger(PartidoDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+            
+        }else{
+            System.out.println("EL PARTIDO con ID "+p.getId_partido() +" ya existe ");
+        }
+        
+        return numTuplas1 > 0;
     }
     
     public boolean insertarResultadosPartidos(Partido partido) {
