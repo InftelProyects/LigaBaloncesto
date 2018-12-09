@@ -33,6 +33,7 @@ import model.Persona;
 import model.Equipo;
 import model.Arbitro;
 import model.Jugador;
+
 //import oracle.net.aso.i;
 import utils.Contants;
 import utils.GeneradorEmparejamiento;
@@ -83,6 +84,7 @@ public class LigaBaloncesto {
         System.out.println ("Insertar Partido:23");
         System.out.println ("Eliminar Entrenador:24");
         System.out.println ("Actualizar entrenador por DNI:25");
+        System.out.println ("Insertar automaticamnete:30");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
@@ -153,7 +155,7 @@ public class LigaBaloncesto {
                     partido.setJornada(numJornada+1);
                     partido.setId_partido(idPartido);
                     idPartido++;
-                }
+                }               
             }
         }
         if(opcion==6){
@@ -414,6 +416,8 @@ public class LigaBaloncesto {
             e.setNivel(temp);
             entrenadorDao.actualizarEntrenador(e);
         }
+         
+         
          
         if(opcion==0){
            
