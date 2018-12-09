@@ -346,7 +346,7 @@ public class LigaBaloncesto {
             a.setDni(temp);
             arbitroDao.eliminarPorDniArbitro(temp);
         }
-
+        
         if(opcion==22){
            Arbitro a = new Arbitro();
            System.out.println ("DNI: ");
