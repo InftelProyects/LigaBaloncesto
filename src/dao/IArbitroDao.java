@@ -16,8 +16,10 @@ public interface IArbitroDao {
     Arbitro buscarPorDni(String dni);
     public List<Arbitro> buscarTodos();
     public boolean insertarArbitro(Arbitro a);
-    //boolean eliminarPorDni(String dni);
-   // boolean actualizarEntrenador(Entrenador e);
+    boolean eliminarPorDniArbitro(String dni);
+    boolean actualizarArbitro(Arbitro a);
+
+   // public void eliminarPorDniArbitro(String temp);
 
     
 }

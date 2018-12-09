@@ -339,7 +339,25 @@ public class LigaBaloncesto {
                 System.out.println("El jugador  ha sido insertado correctamente");
             }
         }    
-        
+        if(opcion==21){
+            Arbitro a = new Arbitro();
+            System.out.println ("DNI: ");
+            String temp= reader.next();
+            a.setDni(temp);
+            arbitroDao.eliminarPorDniArbitro(temp);
+        }
+
+        if(opcion==22){
+           Arbitro a = new Arbitro();
+           System.out.println ("DNI: ");
+            String temp= reader.next();
+            a.setDni(temp);
+           System.out.println ("Provincia: ");
+             temp= reader.next();
+            a.setProvincia(temp);
+           arbitroDao.actualizarArbitro(a);
+        } 
+
         if(opcion==0){
            
            exit();

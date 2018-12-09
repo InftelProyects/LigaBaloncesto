@@ -10,7 +10,7 @@ package model;
  * @author josep
  */
 public class Arbitro extends Persona{
-    int id_partido;
+    
     String provincia;
 
     public Arbitro(String nombre, String apellido,String provincia) {
@@ -23,13 +23,7 @@ public class Arbitro extends Persona{
         
     }
 
-    public int getId_partido() {
-        return id_partido;
-    }
-
-    public void setId_partido(int id_partido) {
-        this.id_partido = id_partido;
-    }
+    
 
     public String getProvincia() {
         return provincia;

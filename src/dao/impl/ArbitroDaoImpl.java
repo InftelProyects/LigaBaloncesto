@@ -113,9 +113,8 @@ public class ArbitroDaoImpl implements IArbitroDao{
         return numTuplas1 > 0;
     }
 
- /*
     @Override
-    public boolean eliminarPorDni(String dni) {
+    public boolean eliminarPorDniArbitro(String dni) {
          int numTuplas1 = 0;
          DatabaseConnector databaseConnector = new DatabaseConnector();
          Connection connection = databaseConnector.getConnection(
@@ -125,39 +124,38 @@ public class ArbitroDaoImpl implements IArbitroDao{
             Statement stmt;
             try {
                 stmt = connection.createStatement();
-                numTuplas1 = stmt.executeUpdate("DELETE FROM PERSONA  WHERE DNI ='"+dni+"'");
+                numTuplas1 = stmt.executeUpdate("DELETE FROM ARBITRO WHERE DNI ='"+dni+"'");
                         
                        
             } catch (SQLException ex) {
-                Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ArbitroDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
            return numTuplas1 > 0;
             
          
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     @Override
-    public boolean actualizarPersona(Persona p) {
+    public boolean actualizarArbitro(Arbitro a) {
          int numTuplas1 = 0;
          DatabaseConnector databaseConnector = new DatabaseConnector();
          Connection connection = databaseConnector.getConnection(
                  Contants.URL, Contants.USERNAME, Contants.PASSWORD);
          Statement stmt;
             try {
-                System.out.println(" actualizar la persona con dni ");
+                System.out.println(" actualizar el arbitro por DNI ");
                 stmt = connection.createStatement();
-                numTuplas1 = stmt.executeUpdate("UPDATE PERSONA SET "
-                        + "NOMBRE = '"+p.getNombre()+"', "
-                        + "APELLIDOS = '"+p.getApellido()+"', "
-                        + "ROL = '"+p.getRol()+"' ,"
-                        + "fecha_nacimiento = '"+p.getFech_nac()+"', "
-                        + "telefono = '"+p.getTelefono()+"' "
-                        + "WHERE DNI =  '"+p.getDni()+"'");
+                numTuplas1 = stmt.executeUpdate("UPDATE ARBITRO SET "
+                        + "PROVINCIA = '"+a.getProvincia()+"' "
+                        + "WHERE DNI =  '"+a.getDni()+"'");
             } catch (SQLException ex) {
-                Logger.getLogger(EntrenadorDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ArbitroDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         return numTuplas1 > 0;
     }
-    
-    */
 }
