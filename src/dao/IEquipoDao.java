@@ -13,9 +13,11 @@ import model.Equipo;
  * @author mohammed
  */
 public interface IEquipoDao {
-    Equipo buscarPorIdEquipo(int id);
+    
     List<Equipo> buscarTodos();
     boolean insertarEquipo(Equipo equipo);  
-    boolean eliminarPorIdEquipo(String nombre);
+    boolean eliminarPorNombreEquipo(String nombre);
     boolean actualizarEquipo(Equipo equipo);
+
+    public Equipo buscarPorNombreEquipo(String nombre_e);
 }

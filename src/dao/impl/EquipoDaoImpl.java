@@ -27,7 +27,7 @@ public class EquipoDaoImpl implements IEquipoDao{
     
      
     @Override
-    public Equipo buscarPorIdEquipo(int id) {
+    public Equipo buscarPorNombreEquipo(String nombre_e) {
          DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
@@ -35,12 +35,12 @@ public class EquipoDaoImpl implements IEquipoDao{
         try {
             stmt = connection.createStatement();
             
-             ResultSet resultado = stmt.executeQuery("SELECT * FROM EQUIPO WHERE ID_EQUIPO ='"+id+"'");
+             ResultSet resultado = stmt.executeQuery("SELECT * FROM EQUIPO WHERE NOMBRE_EQUIPO ='"+nombre_e+"'");
              while (resultado.next()) {
                
                 int idEquipo = resultado.getInt("ID_EQUIPO");
-                String nombre = resultado.getString("NOMBRE");
-                String provencia = resultado.getString("PROVENCIA");
+                String nombre = resultado.getString("NOMBRE_EQUIPO");
+                String provencia = resultado.getString("PROVINCIA");
                 String categoria = resultado.getString("CATEGORIA");
                 int puntos = resultado.getInt("PUNTOS");
                 
@@ -88,7 +88,7 @@ public class EquipoDaoImpl implements IEquipoDao{
         DatabaseConnector databaseConnector = new DatabaseConnector();
         Connection connection = databaseConnector.getConnection(
                 Contants.URL, Contants.USERNAME, Contants.PASSWORD);
-        Equipo buscarPorIdEquipo =  buscarPorIdEquipo(equipo.getId_equipo());
+        //Equipo buscarPorIdEquipo =  buscarPorIdEquipo(equipo.getId_equipo());
         Statement stmt;
         //int mayorID=obtenerMayorID();
         //mayorID++;
@@ -115,7 +115,7 @@ public class EquipoDaoImpl implements IEquipoDao{
     }
 
     @Override
-    public boolean eliminarPorIdEquipo(String nombre) {
+    public boolean eliminarPorNombreEquipo(String nombre) {
        
        int  numTuplas1 = 0; 
        DatabaseConnector databaseConnector = new DatabaseConnector();

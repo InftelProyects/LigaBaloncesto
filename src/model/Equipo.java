@@ -70,8 +70,10 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "categoria=" + categoria + ", nombre=" + nombre + ", provincia=" + provincia + ", id_equipo=" + id_equipo + ", puntos=" + puntos + '}';
+        return nombre + ", categoria= " + categoria + ", provincia= " + provincia + ", puntos= " + puntos;
     }
+
+    
 
     
 }

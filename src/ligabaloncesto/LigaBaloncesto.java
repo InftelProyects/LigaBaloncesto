@@ -56,7 +56,7 @@ public class LigaBaloncesto {
 //MENÚ PARA HACER PRUEBAS
         int opcion;
         Scanner reader = new Scanner(System.in);
-        System.out.println ("Mostrar todo:1");
+        System.out.println ("Mostrar personas:1");
         System.out.println ("Buscar por DNI:2");
         System.out.println ("Añadir Persona:3");
         System.out.println ("Eliminar por DNI:4");
@@ -171,8 +171,8 @@ public class LigaBaloncesto {
             System.out.println("Introduzca nombre de equipo");
             nombre = reader.next();
             
-            boolean eliminarPorIdEquipo = equipoDao.eliminarPorIdEquipo(nombre);
-            if(eliminarPorIdEquipo){
+            boolean eliminarPorNombreEquipo = equipoDao.eliminarPorNombreEquipo(nombre);
+            if(eliminarPorNombreEquipo){
                  System.out.println("El equipo ha sido borrado correctamente");
             }else{
                  System.out.println("El equipo no ha sido borrado");
@@ -231,6 +231,15 @@ public class LigaBaloncesto {
             Arbitro arbitroPorDni = arbitroDao.buscarPorDni(dni);
             System.out.println("Arbitro buscado por dni: " + arbitroPorDni.toString());
         } 
+        
+        if(opcion==15){
+            String nombre_e;
+            System.out.println("Introduzca nombre del equipo: ");
+            nombre_e = reader.next();
+            Equipo equipoPorNombre = equipoDao.buscarPorNombreEquipo(nombre_e);
+            System.out.println("Equipo: " + equipoPorNombre.toString());
+        } 
+        
         
         if(opcion==12){
            List<Arbitro> listaArbitros = arbitroDao.buscarTodos();
