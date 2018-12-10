@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="620.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="342.0" layoutX="255.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="254.69387817382812" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/titulo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-border-color: f04f15; -fx-border-radius: 20px; -fx-border-width: 5;" AnchorPane.bottomAnchor="605.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="90.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Separator opacity="0.0" prefWidth="100.0" style="-fx-background-color: #913d07;" />
+                  <ImageView accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" onMouseClicked="#onBallButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/pelota.png" />
+                     </image>
+                  </ImageView>
+                  <Separator opacity="0.0" prefWidth="200.0" style="-fx-background-color: #913d07;" />
+                  <ImageView accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" onMouseClicked="#onCalendarButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/calendar.png" />
+                     </image>
+                  </ImageView>
+                  <Separator opacity="0.0" prefWidth="200.0" style="-fx-background-color: #913d07;" />
+                  <ImageView accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" onMouseClicked="#onShirtButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/equipos.png" />
+                     </image>
+                  </ImageView>
+                  <Separator opacity="0.0" prefWidth="200.0" style="-fx-background-color: #913d07;" />
+                  <ImageView accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" onMouseClicked="#onCampButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/campo.png" />
+                     </image>
+                  </ImageView>
+                  <Separator opacity="0.0" prefWidth="200.0" style="-fx-background-color: #913d07; -fx-border-color: #913d07;" />
+                  <ImageView accessibleRole="BUTTON" fitHeight="41.0" fitWidth="44.0" onMouseClicked="#onPlayerButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/jugador.png" />
+                     </image>
+                  </ImageView>
+                  <Separator opacity="0.0" prefWidth="200.0" style="-fx-background-color: #913d07; -fx-border-color: #913d07;" />
+                  <ImageView accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/x.png" />
+                     </image>
+                  </ImageView>
+                  <Separator opacity="0.0" prefWidth="100.0" style="-fx-background-color: #913d07; -fx-border-color: #913d07;" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="arrowCalendar" accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" layoutX="224.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/up.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowCamp" accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" layoutX="433.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/up.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowShirt" accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" layoutX="327.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/up.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowBallon" accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" layoutX="122.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/up.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowPlayer" accessibleRole="BUTTON" fitHeight="52.0" fitWidth="47.0" layoutX="532.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/up.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="ballonPanel" layoutX="103.0" layoutY="80.0" prefHeight="302.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-border-color: f04f15; -fx-border-width: 5; -fx-border-radius: 20px;" visible="false" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <ImageView fitHeight="176.0" fitWidth="171.0" layoutX="579.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pelot.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="466.0" layoutX="29.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pres1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="651.0" layoutX="29.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pres2.png" />
+               </image>
+            </ImageView>
+            <ImageView accessibleRole="BUTTON" fitHeight="31.0" fitWidth="34.0" layoutX="350.0" layoutY="165.0" onMouseClicked="#onCalendarButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/calendar.png" />
+               </image>
+            </ImageView>
+            <ImageView accessibleRole="BUTTON" fitHeight="31.0" fitWidth="41.0" layoutX="432.0" layoutY="198.0" onMouseClicked="#onShirtButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/equipos.png" />
+               </image>
+            </ImageView>
+            <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="41.0" layoutX="540.0" layoutY="223.0" onMouseClicked="#onCampButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/campo.png" />
+               </image>
+            </ImageView>
+            <ImageView accessibleRole="BUTTON" fitHeight="41.0" fitWidth="44.0" layoutX="627.0" layoutY="252.0" onMouseClicked="#onPlayerButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/jugador.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="calendarPanel" layoutX="113.0" layoutY="90.0" prefHeight="302.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-border-color: f04f15; -fx-border-width: 5; -fx-border-radius: 20px;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <ImageView fitHeight="176.0" fitWidth="171.0" layoutX="577.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/calendario.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="466.0" layoutX="33.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/cal1.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="calendarTable" layoutX="14.0" layoutY="153.0" prefHeight="395.0" prefWidth="673.0" style="-fx-background-color: ffffff; -fx-border-color: f04f15; -fx-border-width: 2; -fx-border-radius: 5;">
+               <columns>
+                  <TableColumn fx:id="calenFecha" prefWidth="132.0" text="Fecha" />
+                  <TableColumn fx:id="calenHora" prefWidth="104.0" text="Hora" />
+                  <TableColumn fx:id="calenLugar" minWidth="0.0" prefWidth="137.0" text="Lugar" />
+                  <TableColumn fx:id="calenEquipo" prefWidth="134.0" text="Equipo" />
+                  <TableColumn fx:id="calenVsequipo" prefWidth="163.0" text="vs Equipo" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="shirtPanel" layoutX="123.0" layoutY="100.0" prefHeight="302.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-border-color: f04f15; -fx-border-radius: 20px; -fx-border-width: 5;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <TableView fx:id="equipoTable" layoutX="183.0" layoutY="204.0" prefHeight="347.0" prefWidth="629.0" style="-fx-background-color: ffffff; -fx-border-color: f04f15; -fx-border-width: 2; -fx-border-radius: 5;" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="29.0">
+               <columns>
+                  <TableColumn fx:id="nombEquipo" prefWidth="179.0" text="Equipo" />
+                  <TableColumn fx:id="posEquipo" prefWidth="161.0" text="Categoria" />
+                  <TableColumn fx:id="aFavEquipo" minWidth="0.0" prefWidth="150.0" text="Provincia" />
+                  <TableColumn fx:id="puntosEquipo" minWidth="0.0" prefWidth="136.0" text="Puntos" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="185.0" fitWidth="261.0" layoutX="485.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/foto.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="140.0" fitWidth="557.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/equipo.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="selectEquipo" layoutX="166.0" layoutY="100.0" prefHeight="40.0" prefWidth="164.0" promptText="Selecciona equipo" />
+            <Button fx:id="buscarFe1" layoutX="350.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#seleccionarEquipo" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Buscar" textFill="#f56b09">
+               <font>
+                  <Font name="Impact" size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <AnchorPane fx:id="campPanel" layoutX="133.0" layoutY="110.0" prefHeight="302.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-border-color: f04f15; -fx-border-radius: 20px; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <TableView fx:id="ppasados" layoutX="183.0" layoutY="204.0" prefHeight="185.0" prefWidth="629.0" style="-fx-background-color: ffffff; -fx-border-color: f04f15; -fx-border-width: 2; -fx-border-radius: 5;" AnchorPane.bottomAnchor="29.0" AnchorPane.rightAnchor="39.0">
+               <columns>
+                  <TableColumn fx:id="fechaPas" prefWidth="71.0" text="Fecha" />
+                  <TableColumn fx:id="horaPas" minWidth="0.0" prefWidth="65.0" text="Hora" />
+                  <TableColumn fx:id="lugarPas" minWidth="0.0" prefWidth="107.0" text="Lugar" />
+                  <TableColumn fx:id="equipoPas" prefWidth="118.0" text="Equipo" />
+                  <TableColumn fx:id="puntosPas" prefWidth="81.0" text="Puntuación" />
+                  <TableColumn fx:id="vsequipoPas" prefWidth="100.0" text="vs Equipo" />
+                  <TableColumn fx:id="puntosPasvs" prefWidth="82.0" text="Puntuación" />
+               </columns>
+            </TableView>
+            <TableView fx:id="ppendientes" layoutX="24.0" layoutY="95.0" prefHeight="185.0" prefWidth="629.0" style="-fx-background-color: ffffff; -fx-border-color: f04f15; -fx-border-width: 2; -fx-border-radius: 5;">
+               <columns>
+                  <TableColumn fx:id="equipoPen" prefWidth="97.0" text="Equipo" />
+                  <TableColumn fx:id="vsequipoPen" prefWidth="86.0" text="vs Equipo" />
+                  <TableColumn fx:id="fechaPen" prefWidth="123.0" text="Fecha" />
+                  <TableColumn fx:id="horaPen" minWidth="0.0" prefWidth="72.0" text="Hora" />
+                  <TableColumn fx:id="lugarPen" minWidth="0.0" text="Lugar" />
+               </columns>
+            </TableView>
+            <Label layoutX="365.0" layoutY="16.0" prefHeight="17.0" prefWidth="85.0" text="Fecha actual:" textFill="#ff6200">
+               <font>
+                  <Font name="Impact" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="47.0" fitWidth="304.0" layoutX="27.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/parpen.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="290.0" layoutX="34.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/parpas.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="121.0" layoutX="-39.0" layoutY="-46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/partido.png" />
+               </image>
+            </ImageView>
+            <DatePicker fx:id="fechahoy" layoutX="445.0" layoutY="12.0" />
+            <Button fx:id="buscarFe" layoutX="627.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#buscandopPen" style="-fx-background-color: #000000;" text="Buscar" textFill="#f56b09">
+               <font>
+                  <Font name="Impact" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="playerPanel" layoutX="93.0" layoutY="70.0" prefHeight="302.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-border-color: f04f15; -fx-border-width: 5; -fx-border-radius: 20px;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="185.0">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="386.0" layoutX="39.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logtext.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="dniInser" layoutX="122.0" layoutY="86.0" prefHeight="31.0" prefWidth="183.0" style="-fx-background-color: #ff8401; -fx-border-color: #000000; -fx-border-width: 2;" />
+            <Label layoutX="73.0" layoutY="86.0" prefHeight="31.0" prefWidth="59.0" text="DNI :" textFill="#ff8401">
+               <font>
+                  <Font name="Impact" size="24.0" />
+               </font>
+            </Label>
+            <TableView fx:id="dniTable" layoutX="36.0" layoutY="141.0" prefHeight="347.0" prefWidth="629.0" style="-fx-background-color: ffffff; -fx-border-color: f04f15; -fx-border-width: 2; -fx-border-radius: 5;">
+               <columns>
+                  <TableColumn fx:id="rolDni" prefWidth="75.0" text="Rol" />
+                  <TableColumn fx:id="fechaDni" prefWidth="102.0" text="Fecha" />
+                  <TableColumn fx:id="lugarDni" minWidth="0.0" prefWidth="93.0" text="Lugar" />
+                  <TableColumn fx:id="equipoDni" prefWidth="108.0" text="Equipo" />
+                  <TableColumn fx:id="vsequipoDni" prefWidth="149.0" text="vs Equipo" />
+                  <TableColumn fx:id="puntDni" prefWidth="99.0" text="Puntuación" />
+               </columns>
+            </TableView>
+            <Button layoutX="556.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#donwloadPdf" style="-fx-background-color: f04f15; -fx-border-color: #000000;" text="Descargar PDF" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="165.0" fitWidth="157.0" layoutX="572.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/player.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="buscardni" layoutX="316.0" layoutY="84.0" mnemonicParsing="false" onMouseClicked="#buscandoDatos" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Buscar" textFill="#f56b09">
+               <font>
+                  <Font name="Impact" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

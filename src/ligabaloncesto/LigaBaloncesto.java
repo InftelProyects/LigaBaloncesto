@@ -84,7 +84,7 @@ public class LigaBaloncesto {
         System.out.println ("Insertar Partido:23");
         System.out.println ("Eliminar Entrenador:24");
         System.out.println ("Actualizar entrenador por DNI:25");
-        System.out.println ("Insertar automaticamnete:30");
+       // System.out.println ("Insertar automaticamnete:30");
         System.out.println ("Salir:0");
         System.out.println ("Seleccione opcion: ");
         opcion = reader.nextInt();
